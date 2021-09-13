@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoUSMP_GYM.Controllers
 {
+    // probando cambios
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
