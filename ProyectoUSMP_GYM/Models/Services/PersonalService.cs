@@ -9,7 +9,7 @@ namespace ProyectoUSMP_GYM.Models.Services
 {
     public class PersonalService : IPersonalService
     {
-        public Personaladm Create(Personaladm entity)
+        public void Create(Personaladm entity)
         {
             Personaladm result = null;
             string error = "";
