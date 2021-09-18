@@ -71,5 +71,10 @@ namespace ProyectoUSMP_GYM.Models.Services
         {
             throw new NotImplementedException();
         }
+
+        public void Update(Personaladm entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
