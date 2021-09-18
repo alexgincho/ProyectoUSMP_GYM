@@ -9,10 +9,11 @@ namespace ProyectoUSMP_GYM.Models.Services
 {
     public class PersonalService : IPersonalService
     {
-        public Personaladm Create(Personaladm entity)
+        public Personaladm Create(Personaladm entity) // Editando algo
         {
             Personaladm result = null;
             string error = "";
+            int a = 199;
             try
             {
                 using (var db = new DbContext())
