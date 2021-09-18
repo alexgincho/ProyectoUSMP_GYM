@@ -11,7 +11,7 @@ namespace ProyectoUSMP_GYM.Models.Services.Interfaces
         public void Create(Personaladm entity); // Creacion de un Personal Administrativo.
         public Personaladm Get(int id); // Obtener un Personal por su ID.
         public List<Personaladm> GetAll(); // Listado de todo los Personales.
-
-        public void Update(Personaladm entity);
+        public void Update(Personaladm entity); // Actualizar Personal
+        public bool Delete(int id); //Eliminar por ID personal
     }
 }

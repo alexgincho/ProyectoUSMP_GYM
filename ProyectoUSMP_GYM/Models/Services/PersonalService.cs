@@ -42,7 +42,10 @@ namespace ProyectoUSMP_GYM.Models.Services
                 error = ex.Message;
             }
         }
-
+        public bool Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
         public Personaladm Get(int id)
         {
             Personaladm result = null;
