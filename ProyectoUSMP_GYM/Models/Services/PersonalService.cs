@@ -66,5 +66,10 @@ namespace ProyectoUSMP_GYM.Models.Services
             }
             return result;
         }
+
+        public List<Personaladm> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
