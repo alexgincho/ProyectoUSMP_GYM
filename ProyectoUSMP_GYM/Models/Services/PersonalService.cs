@@ -41,7 +41,6 @@ namespace ProyectoUSMP_GYM.Models.Services
             {
                 error = ex.Message;
             }
-            return result;
         }
 
         public Personaladm Get(int id)
