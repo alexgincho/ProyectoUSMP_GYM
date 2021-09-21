@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="~/lib/Plugins/overlayScrollbars/css/OverlayScrollbars.min.css" />
     <!-- Theme style -->
     <link rel="stylesheet" href="~/lib/dist/css/adminlte.min.css"/>
-
+    <link rel="stylesheet" href="~/lib/Plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css" />
     @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />*@
 </head>
@@ -205,11 +205,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
+                            <a asp-controller="Personal" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Widgets
-                                    <span class="right badge badge-danger">New</span>
+                                    Personal                                  
                                 </p>
                             </a>
                         </li>

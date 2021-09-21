@@ -44,18 +44,27 @@ namespace ProyectoUSMP_GYM.Models.Services
         }
         public bool Delete(int id)
         {
-            Personaladm result = null;
-            string error ="";
+            bool result = false;
+            string error = "";
             try
             {
-                using ( var db = new )
-
- 
+                using (var db = new DbContext())
+                {
+                    var obj = db.Personaladms.Find(id);
+                    if (obj != null)
+                    {
+                        obj.Isdeleted = true;
+                        db.SaveChanges();
+                        result = true;
+                    }
+                    else { throw new Exception("Error. Personal Adm no encontrado."); }
+                }
             }
-            catch
+            catch(Exception ex)
             {
-
+                error = ex.Message;
             }
+            return result;
         }
         public Personaladm Get(int id)
         {
@@ -83,12 +92,58 @@ namespace ProyectoUSMP_GYM.Models.Services
 
         public List<Personaladm> GetAll()
         {
-            throw new NotImplementedException();
+            List<Personaladm> result = null;
+            string error = "";
+            try
+            {
+                using (var db = new DbContext())
+                {
+                    var lst = db.Personaladms.ToList().OrderByDescending( p => p.PkPersonal ).ToList();
+                    if(lst.Count() > 0)
+                    {
+                        result = lst;
+                    }
+                    else { throw new Exception("Error. No hay Personal Administrativo registrado"); }
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return result;
         }
 
-        public void Update(Personaladm entity)
+        public Personaladm Update(Personaladm entity)
         {
-            throw new NotImplementedException();
+            Personaladm result = null;
+            string error = "";
+            try
+            {
+                using (var db = new DbContext())
+                {
+                    var obj = db.Personaladms.Find(entity.PkPersonal);
+                    if(obj != null)
+                    {
+                        obj.Dni = entity.Dni;
+                        obj.Nombre = entity.Nombre;
+                        obj.Apellidopaterno = entity.Apellidopaterno;
+                        obj.Apellidomaterno = entity.Apellidomaterno;
+                        obj.Direccion = entity.Direccion;
+                        obj.Telefono = entity.Telefono;
+                        obj.Email = entity.Email;
+                        obj.Usuario = entity.Usuario;
+                        obj.Passwords = entity.Passwords;
+                        db.SaveChanges();
+                        result = entity;
+                    }
+                    else { throw new Exception("Error. Datos no Actualizados"); }
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return result;
         }
     }
 }
