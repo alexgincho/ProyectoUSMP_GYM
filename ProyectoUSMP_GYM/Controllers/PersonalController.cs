@@ -27,6 +27,7 @@ namespace ProyectoUSMP_GYM.Controllers
         {
             Personaladm entity = null;
             ViewBag.Roles = _sRol.GetRoles();
+            if (id != 0) entity = _sPer.Get(id);
             return PartialView("_MantenimientoPersonal",entity ?? new Personaladm());
         }
       
