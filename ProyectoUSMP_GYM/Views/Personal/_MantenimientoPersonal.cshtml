@@ -1,5 +1,5 @@
-﻿
-<!-- Modal Personal Mantenimiento -->
+﻿<!-- Modal Personal Mantenimiento -->
+@model ProyectoUSMP_GYM.Models.Modeldb.Personaladm
 
 <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -14,50 +14,67 @@
                 <form id="FormSavePersonal">
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Nombre">
+                            <label asp-for="Nombre"></label>
+                            <input type="text" class="form-control" placeholder="Nombre" asp-for="Nombre">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Dni">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Apellido Paterno">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Apellido Materno">
+                            <label>Dni</label>
+                            <input type="text" class="form-control" placeholder="Dni" asp-for="Dni">
+                            <span asp-validation-for="Dni" class="alert-danger"></span>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Telefono">
+                            <label>Apellido Paterno</label>
+                            <input type="text" class="form-control" placeholder="Apellido Paterno" asp-for="Apellidopaterno">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Direccion">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col">
-                            <input type="email" class="form-control" placeholder="Email">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Rol">
+                            <label>Apellido Materno</label>
+                            <input type="text" class="form-control" placeholder="Apellido Materno" asp-for="Apellidomaterno">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Usuario">
+                            <label>Telefono</label>
+                            <input type="text" class="form-control" placeholder="Telefono" asp-for="Telefono">
                         </div>
                         <div class="col">
-                            <input type="password" class="form-control" placeholder="Password">
+                            <label>Direccion</label>
+                            <input type="text" class="form-control" placeholder="Direccion" asp-for="Direccion">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label>Email</label>
+                            <input type="email" class="form-control" placeholder="Email" asp-for="Email">
+                        </div>
+                        <div class="col">
+                            <label>Rol</label>
+                            <select class="form-control form-control-sm" asp-for="FkRol">
+                                @foreach (var Rol in ViewBag.Roles)
+                                {
+                                    <option value="@Rol.PkErol"> @Rol.Descripcion </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label>Usuario</label>
+                            <input type="text" class="form-control" placeholder="Usuario" asp-for="Usuario">
+                        </div>
+                        <div class="col">
+                            <label>Contraseña</label>
+                            <input type="password" class="form-control" placeholder="Password" asp-for="Passwords">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" id="btnSave">Save changes</button>
             </div>
         </div>
     </div>
 </div>
+@section Scripts {}

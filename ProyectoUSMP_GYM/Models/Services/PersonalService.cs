@@ -9,7 +9,7 @@ namespace ProyectoUSMP_GYM.Models.Services
 {
     public class PersonalService : IPersonalService
     {
-        public void Create(Personaladm entity)
+        public Personaladm Create(Personaladm entity)
         {
             Personaladm result = null;
             string error = "";
@@ -30,6 +30,8 @@ namespace ProyectoUSMP_GYM.Models.Services
                         result.Usuario = entity.Usuario;
                         result.Passwords = entity.Passwords;
                         result.Isdeleted = false;
+                        result.Fechacrea = DateTime.Now;
+                        result.FkPersonalcrea = 1;
 
                         db.Add(result);
                         db.SaveChanges();
@@ -41,6 +43,7 @@ namespace ProyectoUSMP_GYM.Models.Services
             {
                 error = ex.Message;
             }
+            return result;
         }
         public bool Delete(int id)
         {

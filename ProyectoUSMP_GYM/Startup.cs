@@ -1,9 +1,15 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProyectoUSMP_GYM.Models.Modeldb;
+using ProyectoUSMP_GYM.Models.Services;
+using ProyectoUSMP_GYM.Models.Services.Interfaces;
+using ProyectoUSMP_GYM.Models.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +29,16 @@ namespace ProyectoUSMP_GYM
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Inyeccion de Dependencias Modelos
+            services.AddTransient<IPersonalService, PersonalService>();
+            services.AddScoped<IRolesService, RolesService>();
+            // Inyectando Fluent Validation
+            services.AddMvc().AddFluentValidation();
+            // Agregando Inyeccion de Dependencias FluentValidation
+            services.AddTransient<IValidator<Personaladm>, PersonalValidator>();
+
+
+
             services.AddControllersWithViews();
         }
 

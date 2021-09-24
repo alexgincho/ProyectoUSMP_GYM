@@ -11,7 +11,7 @@ namespace ProyectoUSMP_GYM.Models.Services.Interfaces
         public void Create(Categorium entity); //creacion 
         public Categorium Update(Categorium entity); // actualizar 
         public List<Categorium> GetAll(); //lista
-        public bool Delete(int id); // eliminar
+        //public bool Delete(int id); // eliminar
     }
 
 }
