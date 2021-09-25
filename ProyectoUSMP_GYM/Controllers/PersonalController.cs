@@ -42,13 +42,33 @@ namespace ProyectoUSMP_GYM.Controllers
                 {
                     return BadRequest();
                 }
-                rpta.Message = "Success";
                 rpta.Data = _sPer.Create(entity);
+                rpta.Message = "Success.";
+                rpta.State = 200;
             }
             catch (Exception ex)
             {
                 rpta.Message = ex.Message;
                 rpta.Data = null;
+            }
+            return Ok(rpta);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllPersonal()
+        {
+            Response rpta = new Response();
+            try
+            {        
+                rpta.Data = _sPer.GetAll();
+                rpta.State = 200;
+                rpta.Message = "Success.";
+            }
+            catch (Exception ex)
+            {
+                rpta.Data = null;
+                rpta.Message = "Error";
+                rpta.State = 400;
             }
             return Ok(rpta);
         }

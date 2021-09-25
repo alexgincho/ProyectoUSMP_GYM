@@ -29,8 +29,10 @@ namespace ProyectoUSMP_GYM.Models.Services
                         result.Email = entity.Email;
                         result.Usuario = entity.Usuario;
                         result.Passwords = entity.Passwords;
+                        result.FkRol = entity.FkRol;
                         result.Isdeleted = false;
                         result.Fechacrea = DateTime.Now;
+                        result.Fechaedita = DateTime.Now;
                         result.FkPersonalcrea = 1;
 
                         db.Add(result);
@@ -101,8 +103,18 @@ namespace ProyectoUSMP_GYM.Models.Services
             {
                 using (var db = new DbContext())
                 {
-                    var lst = db.Personaladms.ToList().OrderByDescending( p => p.PkPersonal ).ToList();
-                    if(lst.Count() > 0)
+                    var lst = db.Personaladms.ToList().OrderByDescending(p => p.PkPersonal).ToList();
+                    //var lst = db.Personaladms.Join(
+                    //            db.Roles, p => p.FkRol, 
+                    //            r => r.PkErol, 
+                    //            (p, r) => 
+                    //            new 
+                    //            { 
+                    //                p.Nombre,
+                    //                r.Descripcion
+                    //            });
+                    //var personales = lst.ToList();
+                    if (lst.Count() > 0)
                     {
                         result = lst;
                     }

@@ -288,6 +288,11 @@ namespace ProyectoUSMP_GYM.Models.Modeldb
 
                 entity.Property(e => e.FkProveedor).HasColumnName("fk_proveedor");
 
+                entity.Property(e => e.Imagen)
+                    .IsRequired()
+                    .HasColumnType("character varying")
+                    .HasColumnName("imagen");
+
                 entity.Property(e => e.Isdelete).HasColumnName("isdelete");
 
                 entity.Property(e => e.Nombre)
