@@ -118,7 +118,9 @@
             { data: "fechacrea", title: "Fecha de Ingreso" },
             { data: "fkRol", title: "Cargo" },
             { data: "isdeleted", title: "Estado" },
-            { data: "usuario", title:"Usuario Login" }
+            { data: "usuario", title:"Usuario Login" },
+            { data: null, defaultContent: "<button type='button' class='btn btn-primary'>Editar</i></button>"},
+            { data: null, defaultContent: "<button type='button' class='btn btn-danger'>Eliminar</i></button>"}
         ]
     });
 
