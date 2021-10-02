@@ -41,8 +41,6 @@
             "FkRol": $("#FkRol").val(),
             "Usuario": $("#Usuario").val(),
             "Passwords": $("#Passwords").val()
-
-
         }
        
         Swal.fire({
@@ -119,9 +117,10 @@
             { data: "fkRol", title: "Cargo" },
             { data: "isdeleted", title: "Estado" },
             { data: "usuario", title:"Usuario Login" },
-            { data: null, defaultContent: "<button type='button' class='btn btn-primary'>Editar</i></button>"},
-            { data: null, defaultContent: "<button type='button' class='btn btn-danger'>Eliminar</i></button>"}
+            { data: null, defaultContent: "<button type='button' id='btnEditar' class='btn btn-primary'><i class='fas fa-pen-square'></i></i></button>"},
+            { data: null, defaultContent: "<button type='button' id='btnEliminar' class='btn btn-danger'><i class='fas fa-trash-alt'></i></i></button>"}
         ]
     });
+  
 
 });
