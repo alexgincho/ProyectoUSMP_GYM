@@ -64,6 +64,11 @@
                             Swal.fire('Saved!', '', 'success')
                             $('#modal-default').modal('hide');
                         }
+                        else if (data.state == 404) {
+                            console.log(data);
+                            Swal.fire(`Upss! ${data.message}`, '', 'info')
+                            $('#modal-default').modal('hide');
+                        }
                     },
                     error: function (error) {
                         if (error.status === 400) {
@@ -84,7 +89,7 @@
     });
 
     // Listado de Personal Consumiendo Datataables
-    TablePersonal.DataTable({
+    let DataTablePersonal = TablePersonal.DataTable({
         scrollY: 200,
         scrollX: true,
         paging: false,
@@ -117,10 +122,23 @@
             { data: "fkRol", title: "Cargo" },
             { data: "isdeleted", title: "Estado" },
             { data: "usuario", title:"Usuario Login" },
-            { data: null, defaultContent: "<button type='button' id='btnEditar' class='btn btn-primary'><i class='fas fa-pen-square'></i></i></button>"},
+            {
+                data: null,
+                defaultContent: "<button type='button' id='btnEditar' class='btn btn-primary'><i class='fas fa-pen-square'></i></i></button>",
+                orderable: false,
+                searchable: false,
+                width: "26px"
+            },
             { data: null, defaultContent: "<button type='button' id='btnEliminar' class='btn btn-danger'><i class='fas fa-trash-alt'></i></i></button>"}
         ]
     });
-  
+
+    // Ingresando Update
+
+    TablePersonal.on("click", "#btnEditar", function () {
+        let id = DataTablePersonal.row($(this).parents("tr")).data().pkPersonal;
+        console.log(id);
+        InvocarModal(id);
+    });
 
 });

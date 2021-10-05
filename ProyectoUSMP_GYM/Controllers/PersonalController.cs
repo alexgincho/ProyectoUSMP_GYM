@@ -38,16 +38,32 @@ namespace ProyectoUSMP_GYM.Controllers
             Response rpta = new Response();
             try
             {
-                if (!ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
-                    return BadRequest();
+                    if (entity.PkPersonal != 0)
+                    {
+                        // Logica de Actualizacion de Personal.
+
+                    }
+                    else
+                    {
+                        var ValidateDni = _sPer.ValidarDniPersonal(entity.Dni);
+                        var ValidateEmail = _sPer.ValidarEmailPersonal(entity.Email);
+                        var ValidateUser = _sPer.ValidarUsuarioPersonal(entity.Usuario);
+                        if (ValidateDni || ValidateEmail || ValidateUser)
+                        {
+                            throw new Exception("Error. Datos ya Registrados.");
+                        }
+                        rpta.Data = _sPer.Create(entity);
+                        rpta.Message = "Success.";
+                        rpta.State = 200;
+                    }
                 }
-                rpta.Data = _sPer.Create(entity);
-                rpta.Message = "Success.";
-                rpta.State = 200;
+                return BadRequest();
             }
             catch (Exception ex)
             {
+                rpta.State = 404;
                 rpta.Message = ex.Message;
                 rpta.Data = null;
             }

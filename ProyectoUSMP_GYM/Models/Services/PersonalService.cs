@@ -139,19 +139,80 @@ namespace ProyectoUSMP_GYM.Models.Services
                     var obj = db.Personaladms.Find(entity.PkPersonal);
                     if(obj != null)
                     {
-                        obj.Dni = entity.Dni;
+                        obj.Dni = entity.Dni; // Validar Dni no repetidos
                         obj.Nombre = entity.Nombre;
                         obj.Apellidopaterno = entity.Apellidopaterno;
                         obj.Apellidomaterno = entity.Apellidomaterno;
                         obj.Direccion = entity.Direccion;
                         obj.Telefono = entity.Telefono;
-                        obj.Email = entity.Email;
-                        obj.Usuario = entity.Usuario;
+                        obj.Email = entity.Email; // Validar Email no repetidos
+                        obj.Usuario = entity.Usuario; // Validar Usuarios no repetidos
                         obj.Passwords = entity.Passwords;
+                        obj.Fechaedita = DateTime.Now;
                         db.SaveChanges();
                         result = entity;
                     }
                     else { throw new Exception("Error. Datos no Actualizados"); }
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return result;
+        }
+
+        public bool ValidarDniPersonal(string dni)
+        {
+            bool result = false;
+            string error = "";
+            try
+            {
+                using (var db = new DbContext())
+                {
+                    var person = db.Personaladms.Where(p => p.Dni == dni).FirstOrDefault();
+                    if (person != null) { result = true; }
+                    else { result = false; }
+                }
+            }
+            catch(Exception ex)
+            {
+                error = ex.Message;
+            }
+            return result;
+        }
+
+        public bool ValidarEmailPersonal(string email)
+        {
+            bool result = false;
+            string error = "";
+            try
+            {
+                using (var db = new DbContext())
+                {
+                    var person = db.Personaladms.Where(p => p.Email == email).FirstOrDefault();
+                    if (person != null) { result = true; }
+                    else { result = false; }
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return result;
+        }
+
+        public bool ValidarUsuarioPersonal(string usuario)
+        {
+            bool result = false;
+            string error = "";
+            try
+            {
+                using (var db = new DbContext())
+                {
+                    var person = db.Personaladms.Where(p => p.Usuario == usuario).FirstOrDefault();
+                    if (person != null) { result = true; }
+                    else { result = false; }
                 }
             }
             catch (Exception ex)
