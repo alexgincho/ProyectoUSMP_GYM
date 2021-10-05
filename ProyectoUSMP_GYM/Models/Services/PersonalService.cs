@@ -59,6 +59,7 @@ namespace ProyectoUSMP_GYM.Models.Services
                     if (obj != null)
                     {
                         obj.Isdeleted = true;
+                        obj.Fechaedita = DateTime.Now;
                         db.SaveChanges();
                         result = true;
                     }

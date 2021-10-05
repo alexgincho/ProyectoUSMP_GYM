@@ -70,6 +70,23 @@ namespace ProyectoUSMP_GYM.Controllers
             return Ok(rpta);
         }
 
+        [HttpPost]
+        public IActionResult DesactivePersonal([FromBody] int id)
+        {
+            Response rpta = new Response();
+            try
+            {
+                var DeletePerson = _sPer.Delete(id) ? rpta.Message = "Bien! Personal Desactivado.": throw new Exception("Error. Personal no se pudo Eliminar.");    
+            }
+            catch (Exception ex)
+            {
+                rpta.State = 404;
+                rpta.Data = null;
+                rpta.Message = ex.Message;
+            }
+            return Ok(rpta);
+        }
+
         [HttpGet]
         public IActionResult GetAllPersonal()
         {

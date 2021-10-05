@@ -140,5 +140,14 @@
         console.log(id);
         InvocarModal(id);
     });
+    // Desactivar un Personal.
+    TablePersonal.on("click", "#btnEliminar", function () {
+        let id = DataTablePersonal.row($(this).parents("tr")).data().pkPersonal;
+        console.log(id);
+        // Ajax consumir rest metodo delete personal.
+        $.ajax({
 
+
+        });
+    });
 });
