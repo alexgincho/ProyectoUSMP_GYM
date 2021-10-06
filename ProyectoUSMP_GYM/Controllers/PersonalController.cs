@@ -59,7 +59,8 @@ namespace ProyectoUSMP_GYM.Controllers
                         rpta.State = 200;
                     }
                 }
-                return BadRequest();
+                else { return BadRequest(); }
+                
             }
             catch (Exception ex)
             {
@@ -76,7 +77,14 @@ namespace ProyectoUSMP_GYM.Controllers
             Response rpta = new Response();
             try
             {
-                var DeletePerson = _sPer.Delete(id) ? rpta.Message = "Bien! Personal Desactivado.": throw new Exception("Error. Personal no se pudo Eliminar.");    
+                var DeletePerson = _sPer.Delete(id);
+                if (DeletePerson)
+                {
+                    rpta.Data = true;
+                    rpta.Message = "Se Desactivo Personal Correctamente!";
+                    rpta.State = 200;
+                }
+                else { throw new Exception("Error. No se pudo desactivar el Personal."); }
             }
             catch (Exception ex)
             {

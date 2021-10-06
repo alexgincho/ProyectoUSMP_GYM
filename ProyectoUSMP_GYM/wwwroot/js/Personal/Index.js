@@ -26,7 +26,49 @@
             }
         });
     }
-// Agregar Personal Administrativo
+    // Listado de Personal Consumiendo Datataables
+    let DataTablePersonal = TablePersonal.DataTable({
+        scrollY: 200,
+        scrollX: true,
+        paging: false,
+        ordering:false,
+        ajax: {
+            url: '/Personal/GetAllPersonal',
+        },
+        columnDefs: [
+            { targets: 0, width: 100},
+            { targets: 1, width: 110},
+            { targets: 2, width: 180 },
+            { targets: 3, width: 180 },
+            { targets: 4, width: 210 },
+            { targets: 5, width: 100 },
+            { targets: 6, width: 210 },
+            { targets: 7, width: 150 },
+            { targets: 8, width: 100 },
+            { targets: 9, width: 110 }
+        ],
+        columns: [
+            { data: "dni", title:"Dni" },
+            { data: "nombre", title: "Nombre" },
+            { data: "apellidopaterno", title: "Apellido Paterno" },
+            { data: "apellidomaterno", title: "Apellido Materno" },
+            { data: "direccion", title: "Direccion" },
+            { data: "telefono", title:"Celular" },
+            { data: "email", title: "Email" },
+            { data: "fechacrea", title: "Fecha de Ingreso" },
+            { data: "fkRol", title: "Cargo" },
+            { data: "usuario", title:"Usuario Login" },
+            {
+                data: null,
+                defaultContent: "<button type='button' id='btnEditar' class='btn btn-primary'><i class='fas fa-pen-square'></i></i></button>",
+                orderable: false,
+                searchable: false,
+                width: "26px"
+            },
+            { data: null, defaultContent: "<button type='button' id='btnEliminar' class='btn btn-danger'><i class='fas fa-trash-alt'></i></i></button>"}
+        ]
+    });
+    // Agregar Personal Administrativo
     $(".modal-container").on("click", "#btnSave", function (e) {
         e.preventDefault();
         let Personal = {
@@ -42,7 +84,7 @@
             "Usuario": $("#Usuario").val(),
             "Passwords": $("#Passwords").val()
         }
-       
+
         Swal.fire({
             title: 'Desea Registrar a este Personal?',
             showDenyButton: true,
@@ -63,6 +105,7 @@
                             console.log(data);
                             Swal.fire('Saved!', '', 'success')
                             $('#modal-default').modal('hide');
+                             DataTablePersonal.ajax.reload();
                         }
                         else if (data.state == 404) {
                             console.log(data);
@@ -81,56 +124,7 @@
                 Swal.fire('Cambios no Registrados', '', 'info')
                 $('#modal-default').modal('hide');
             }
-
         })
-        
-
-        
-    });
-
-    // Listado de Personal Consumiendo Datataables
-    let DataTablePersonal = TablePersonal.DataTable({
-        scrollY: 200,
-        scrollX: true,
-        paging: false,
-        ordering:false,
-        ajax: {
-            url: '/Personal/GetAllPersonal',
-        },
-        columnDefs: [
-            { targets: 0, width: 100},
-            { targets: 1, width: 110},
-            { targets: 2, width: 180 },
-            { targets: 3, width: 180 },
-            { targets: 4, width: 210 },
-            { targets: 5, width: 100 },
-            { targets: 6, width: 210 },
-            { targets: 7, width: 150 },
-            { targets: 8, width: 100 },
-            { targets: 9, width: 100 },
-            { targets: 10, width: 110 },
-        ],
-        columns: [
-            { data: "dni", title:"Dni" },
-            { data: "nombre", title: "Nombre" },
-            { data: "apellidopaterno", title: "Apellido Paterno" },
-            { data: "apellidomaterno", title: "Apellido Materno" },
-            { data: "direccion", title: "Direccion" },
-            { data: "telefono", title:"Celular" },
-            { data: "email", title: "Email" },
-            { data: "fechacrea", title: "Fecha de Ingreso" },
-            { data: "fkRol", title: "Cargo" },
-            { data: "isdeleted", title: "Estado" },
-            { data: "usuario", title:"Usuario Login" },
-            {
-                data: null,
-                defaultContent: "<button type='button' id='btnEditar' class='btn btn-primary'><i class='fas fa-pen-square'></i></i></button>",
-                orderable: false,
-                searchable: false,
-                width: "26px"
-            },
-            { data: null, defaultContent: "<button type='button' id='btnEliminar' class='btn btn-danger'><i class='fas fa-trash-alt'></i></i></button>"}
-        ]
     });
 
     // Ingresando Update
@@ -143,11 +137,45 @@
     // Desactivar un Personal.
     TablePersonal.on("click", "#btnEliminar", function () {
         let id = DataTablePersonal.row($(this).parents("tr")).data().pkPersonal;
-        console.log(id);
+        let nombre = DataTablePersonal.row($(this).parents("tr")).data().nombre;
+        console.log(id); console.log(nombre);
         // Ajax consumir rest metodo delete personal.
-        $.ajax({
-
-
+        Swal.fire({
+            title: 'Estas Seguro?',
+            text: `que desea eliminar a este personal : ${nombre} `,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ok, Eliminar esto!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: `/Personal/DesactivePersonal`,
+                    data: JSON.stringify(id),                 
+                    type: 'POST',
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        if (data.state == 200) {
+                            Swal.fire(
+                                'Desactivado!',
+                                `El Personal ${nombre} a sido Desactivado.`,
+                                'success'
+                            )
+                            DataTablePersonal.ajax.reload();
+                        }
+                    },
+                    error: function (error) {
+                        if (error.status === 400) {
+                            Swal.fire('Upss! Ocurrio Algo.', '', 'info')
+                        }
+                    }
+                });
+            }
         });
+
     });
+
 });

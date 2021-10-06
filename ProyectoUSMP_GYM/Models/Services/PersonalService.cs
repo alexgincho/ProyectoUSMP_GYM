@@ -104,7 +104,7 @@ namespace ProyectoUSMP_GYM.Models.Services
             {
                 using (var db = new DbContext())
                 {
-                    var lst = db.Personaladms.ToList().OrderByDescending(p => p.PkPersonal).ToList();
+                    var lst = db.Personaladms.Where(p=>p.Isdeleted!=true).ToList().OrderByDescending(p => p.PkPersonal).ToList();
                     //var lst = db.Personaladms.Join(
                     //            db.Roles, p => p.FkRol, 
                     //            r => r.PkErol, 
