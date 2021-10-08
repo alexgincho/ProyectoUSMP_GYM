@@ -5,13 +5,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Registrar Personal</h4>
+                <h4 class="modal-title">@(Model.PkPersonal !=0 ? "Actualizar":"Registrar") Personal</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form id="FormSavePersonal">
+                    <input type="hidden" asp-for="PkPersonal">
                     <div class="form-row">
                         <div class="col">
                             <label asp-for="Nombre"></label>
@@ -71,8 +72,8 @@
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnSave">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id=@(Model.PkPersonal !=0 ? "btnUpdate": "btnSave")>@(Model.PkPersonal!=0 ? "Actualizar":"Guardar")</button>
             </div>
         </div>
     </div>
