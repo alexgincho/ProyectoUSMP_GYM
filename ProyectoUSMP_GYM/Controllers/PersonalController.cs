@@ -71,6 +71,43 @@ namespace ProyectoUSMP_GYM.Controllers
             return Ok(rpta);
         }
 
+        [HttpPost]  
+        public IActionResult UpdatePersonal([FromBody] Personaladm entity)
+        {
+            Response rpta = new Response();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (entity.PkPersonal != 0)
+                    {
+                       //var ValidateDni = _sPer.ValidarDniPersonal(entity.Dni);
+                       // if (ValidateDni)
+                        //{
+                          //  throw new Exception("Error. Datos ya Registrados.");
+                        //}
+                        rpta.Data = _sPer.Update(entity);
+                        rpta.Message = "Success.";
+                        rpta.State = 200;
+
+                    }
+                    else
+                    {
+                        return BadRequest();
+                    }
+                }
+                else { return BadRequest(); }
+                
+            }
+            catch (Exception ex)
+            {
+                rpta.State = 404;
+                rpta.Message = ex.Message;
+                rpta.Data = null;
+            }
+            return Ok(rpta);
+        }
+
         [HttpPost]
         public IActionResult DesactivePersonal([FromBody] int id)
         {
