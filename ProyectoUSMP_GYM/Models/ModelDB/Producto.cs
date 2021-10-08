@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -30,8 +31,11 @@ namespace ProyectoUSMP_GYM.Models.Modeldb
         public bool? Isdelete { get; set; }
         public string Imagen { get; set; }
 
+        [JsonIgnore]
         public virtual Categorium FkCategoriaNavigation { get; set; }
+        [JsonIgnore]
         public virtual Proveedor FkProveedorNavigation { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Detalleventum> Detalleventa { get; set; }
     }
 }

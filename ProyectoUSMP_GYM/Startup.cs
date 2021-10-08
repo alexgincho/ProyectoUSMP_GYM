@@ -32,6 +32,7 @@ namespace ProyectoUSMP_GYM
             // Inyeccion de Dependencias Modelos
             services.AddTransient<IPersonalService, PersonalService>();
             services.AddScoped<IRolesService, RolesService>();
+            services.AddScoped<IProductoService, ProductoService>();
             // Inyectando Fluent Validation
             services.AddMvc().AddFluentValidation();
             // Agregando Inyeccion de Dependencias FluentValidation
