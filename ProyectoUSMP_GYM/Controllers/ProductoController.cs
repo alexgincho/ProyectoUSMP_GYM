@@ -22,12 +22,14 @@ namespace ProyectoUSMP_GYM.Controllers
         {
             return View();
         }
-        /*
-        public IActionResult MantenimientoProducto(int id = 0)
+        [HttpGet]
+        public IActionResult MantenimientoProductos(int id = 0)
         {
-            //revisar
+            Producto entity =null;
+            if(id!=0) entity = _sPro.Get(id);
+            return PartialView("_MatenimientoProducto",entity ?? new Producto());
         }
-         */
+         
 
         // Services Rest
         [HttpPost]

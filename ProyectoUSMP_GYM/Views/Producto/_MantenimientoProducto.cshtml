@@ -48,15 +48,20 @@
                             <label>Descuento</label>
                             <input type="number" class="form-control form-control-sm" placeholder="Descuento" asp-for="Descuento" autocomplete="off">
                         </div>
+                        <!--
                         <div class="col">
                             <label>Categoria</label>
                             <select class="form-control form-control-sm" asp-for="FkCategoria">
+                    
                                 @foreach (var Rol in ViewBag.Roles)
                                 {
                                     <option value="@Rol.PkErol"> @Rol.Descripcion </option>
                                 }
+
                             </select>
                         </div>
+                        -->
+
                     </div>
                     <div class="form-row">
                         <div class="col">
@@ -73,4 +78,3 @@
         </div>
     </div>
 </div>
-@section Scripts {}

@@ -10,10 +10,10 @@ $(document).ready(function() {
     
     //Función Invocar un modal 
     function InvocarModal(id) {
-        AbrirModal(`/Producto/MantenimientoProducto/${id ? id : ""}`);
+        AbrirModal(`/Producto/MantenimientoProductos/${id ? id : ""}`);
 
     }
-     
+    
     //Función para abrir un modal
     function AbrirModal(url) {
 
@@ -26,10 +26,12 @@ $(document).ready(function() {
                 $('.modal-container').html(data).find('.modal').modal({
                     show: true
                 });
+            },error : function (error){
+                console.log(error);
             }
         });
     }
-
+/*
     //Listadao de Producto-revisar getallproducto
     let DataTableProducto = TableProducto.DataTable({
         scrollY:200,
@@ -69,7 +71,7 @@ $(document).ready(function() {
             },
             { data: null, defaultContent: "<button type='button' id='btnEliminar' class='btn btn-danger'><i class='fas fa-trash-alt'></i></i></button>"}
         ]
-    })
+    });
 
     //Agregar Producto 
     $(".modal-container").on("click", "#btnSave", function (e) {
@@ -185,5 +187,5 @@ $(document).ready(function() {
    
     });
     
-
+*/
 });
