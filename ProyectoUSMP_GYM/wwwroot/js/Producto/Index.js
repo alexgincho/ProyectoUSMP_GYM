@@ -11,7 +11,6 @@ $(document).ready(function() {
     //Función Invocar un modal 
     function InvocarModal(id) {
         AbrirModal(`/Producto/MantenimientoProductos/${id ? id : ""}`);
-
     }
     
     //Función para abrir un modal
