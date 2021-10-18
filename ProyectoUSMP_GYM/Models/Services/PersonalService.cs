@@ -1,4 +1,5 @@
 ﻿using ProyectoUSMP_GYM.Models.Modeldb;
+using ProyectoUSMP_GYM.Models.Response;
 using ProyectoUSMP_GYM.Models.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -120,6 +121,27 @@ namespace ProyectoUSMP_GYM.Models.Services
                         result = lst;
                     }
                     else { throw new Exception("Error. No hay Personal Administrativo registrado"); }
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return result;
+        }
+
+        public Personaladm LoginPersonal(LoginPersonal usuario)
+        {
+            Personaladm result = null;
+            string error = "";
+            try
+            {
+                using (var db = new DbContext())
+                {
+                    var obj = db.Personaladms.Where(p => p.Usuario == usuario.Usuario &&
+                                                    p.Passwords == usuario.Password && p.Isdeleted != true).FirstOrDefault();
+                    if(obj != null) { result = obj; }
+                    else { throw new Exception("Error. Usuario no Existe"); }
                 }
             }
             catch (Exception ex)
