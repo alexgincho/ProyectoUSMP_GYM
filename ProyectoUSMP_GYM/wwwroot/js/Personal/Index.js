@@ -128,13 +128,68 @@
     });
 
     // Ingresando Update
-
-    TablePersonal.on("click", "#btnEditar", function () {
-        let id = DataTablePersonal.row($(this).parents("tr")).data().pkPersonal;
-        console.log(id);
-        InvocarModal(id);
-    });
+        TablePersonal.on("click", "#btnEditar", function () {
+            let id = DataTablePersonal.row($(this).parents("tr")).data().pkPersonal;
+            console.log(id);
+            InvocarModal(id); 
+        });
+        $(".modal-container").on("click", "#btnUpdate", function (e) {
+            e.preventDefault();
+            let Personal = {
+                "PkPersonal": $("#PkPersonal").val(),
+                "Dni": $("#Dni").val(),
+                "Nombre": $("#Nombre").val(),
+                "Apellidopaterno": $("#Apellidopaterno").val(),
+                "Apellidomaterno": $("#Apellidomaterno").val(),
+                "Telefono": $("#Telefono").val(),
+                "Direccion": $("#Direccion").val(),
+                "Email": $("#Email").val(),
+                "FkRol": $("#FkRol").val(),
+                "Usuario": $("#Usuario").val(),
+                "Passwords": $("#Passwords").val()
+            }
     
+            Swal.fire({
+                title: 'Desea actualizar a este Personal?',
+                showDenyButton: true,
+                confirmButtonText: 'Actualizar',
+                denyButtonText: `Cancelar`,
+                denyButtonClass: 'button-cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/Personal/UpdatePersonal',
+                        data: JSON.stringify(Personal),
+                        type: 'POST',
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            if (data.state == 200) {
+                                console.log(data);
+                                Swal.fire('Update!', '', 'success')
+                                $('#modal-default').modal('hide');
+                                 DataTablePersonal.ajax.reload();
+                            }
+                            else if (data.state == 404) {
+                                console.log(data);
+                                Swal.fire(`Upss! ${data.message}`, '', 'info')
+                                $('#modal-default').modal('hide');
+                            }
+                        },
+                        error: function (error) {
+                            if (error.status === 400) {
+                                Swal.fire('Upss! Ocurrio Algo.', '', 'info')
+                            }
+                        }
+                    });
+                }
+                else if (result.isDenied) {
+                    Swal.fire('Cambios no actualizados', '', 'info')
+                    $('#modal-default').modal('hide');
+                }
+            })
+        });
     // Desactivar un Personal.
     TablePersonal.on("click", "#btnEliminar", function () {
         let id = DataTablePersonal.row($(this).parents("tr")).data().pkPersonal;
@@ -176,7 +231,6 @@
                 });
             }
         });
-
     });
 
 });
