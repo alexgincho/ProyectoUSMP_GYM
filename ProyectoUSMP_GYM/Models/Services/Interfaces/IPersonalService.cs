@@ -1,4 +1,5 @@
 ﻿using ProyectoUSMP_GYM.Models.Modeldb;
+using ProyectoUSMP_GYM.Models.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace ProyectoUSMP_GYM.Models.Services.Interfaces
         public bool ValidarDniPersonal(string dni); // Validamos el dni que no se ingrese duplicados.
         public bool ValidarUsuarioPersonal(string usuario); // Validamos que no se registren usuarios con el mismo name.
         public bool ValidarEmailPersonal(string email); // Validamos que no se registren email duplicados.
+        public Personaladm LoginPersonal(LoginPersonal usuario); // Login del Personal.
     }
 }
