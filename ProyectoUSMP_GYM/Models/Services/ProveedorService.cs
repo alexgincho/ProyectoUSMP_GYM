@@ -9,7 +9,7 @@ namespace ProyectoUSMP_GYM.Models.Services
 {
     public class ProveedorService : IProveedorService
     {
-        public void Create(Proveedor entity)
+        public Proveedor Create(Proveedor entity)
         {
             Proveedor result = null;
             string error = "";
@@ -34,6 +34,7 @@ namespace ProyectoUSMP_GYM.Models.Services
             {
                 error = ex.Message;
             }
+            return result;
         }
         // una chequeada
         public bool Delete(int id)
