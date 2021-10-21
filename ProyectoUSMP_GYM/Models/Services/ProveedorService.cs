@@ -35,10 +35,58 @@ namespace ProyectoUSMP_GYM.Models.Services
                 error = ex.Message;
             }
         }
-        // con problemas
+        // una chequeada
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            string error = "";
+            try
+            {
+                using (var db = new DbContext())
+                {
+                    var obj = db.Productos.Find(id);
+                    if (obj != null)
+                    {
+                        obj.Isdelete = true;
+                        obj.Fechaedita = DateTime.Now;
+                        db.SaveChanges();
+                        result = true;
+
+                    }
+                    else { throw new Exception("error"); }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+
+            }
+            return result;
+        }
+
+        public Proveedor Get(int id)
+        {
+            Proveedor result = null;
+            string error = "";
+            try
+            {
+                using (var db = new DbContext())
+                {
+                    var obj = db.Proveedors.Where(u => u.PkProveedor == id && u.Isdelete != true);
+                    var prov = obj.FirstOrDefault();
+                    if (prov != null)
+                    {
+                        result = prov;
+                    }
+                    else { throw new Exception("proveedor no Existe."); }
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return result;
         }
 
         public List<Proveedor> GetAll()

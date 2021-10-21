@@ -12,6 +12,7 @@ namespace ProyectoUSMP_GYM.Models.Services.Interfaces
         public Proveedor Update(Proveedor entity); // actualizar 
         public List<Proveedor> GetAll(); //lista
         public bool Delete(int id); // eliminar
+        public Proveedor Get(int id); //obtener un proveedor mediante el ID
     }
 
 }
