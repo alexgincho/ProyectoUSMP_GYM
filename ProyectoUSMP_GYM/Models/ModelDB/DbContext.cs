@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace ProyectoUSMP_GYM.Models.Modeldb
+namespace ProyectoUSMP_GYM.Models.ModelDB
 {
     public partial class DbContext : Microsoft.EntityFrameworkCore.DbContext
     {
@@ -58,6 +58,8 @@ namespace ProyectoUSMP_GYM.Models.Modeldb
                 entity.Property(e => e.Descripcion)
                     .HasMaxLength(100)
                     .HasColumnName("descripcion");
+
+                entity.Property(e => e.Isdelete).HasColumnName("isdelete");
             });
 
             modelBuilder.Entity<Departamento>(entity =>

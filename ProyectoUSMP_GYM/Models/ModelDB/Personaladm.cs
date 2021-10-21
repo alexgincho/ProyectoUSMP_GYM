@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 #nullable disable
 
-namespace ProyectoUSMP_GYM.Models.Modeldb
+namespace ProyectoUSMP_GYM.Models.ModelDB
 {
     public partial class Personaladm
     {
@@ -30,9 +29,7 @@ namespace ProyectoUSMP_GYM.Models.Modeldb
         public DateTime? Fechaedita { get; set; }
         public bool? Isdeleted { get; set; }
 
-        [JsonIgnore]
         public virtual Role FkRolNavigation { get; set; }
-        [JsonIgnore]
         public virtual ICollection<Usuariomembresium> Usuariomembresia { get; set; }
     }
 }
