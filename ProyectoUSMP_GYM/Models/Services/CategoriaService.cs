@@ -34,30 +34,32 @@ namespace ProyectoUSMP_GYM.Models.Services
 
             }
         }
-        //Aun con problemas
-        //public bool Delete(int id)
-        //{
-        //    bool result = false;
-        //    string error = "";
-        //    try
-        //    {
-        //        using (var db = new DbContext())
-        //        {
-        //            var obj = db.Categoria.Find(id);
-        //            if(obj != null)
-        //            {
-        //                obj= 
-        //            }
-        //            else {  throw new Exception("Error"); }
-        //        }
+        public bool Delete(int id)
+        {
+            bool result = false;
+            string error = "";
+            try
+            {
+                using (var db = new DbContext())
+                {
+                    var obj = db.Categoria.Find(id);
+                    if (obj != null)
+                    {
+                        obj.Isdelete = true;
+                        db.SaveChanges();
+                        result = true;
+                    
+                }
+                    else { throw new Exception("Error. producto no encontrado"); }
+                }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        error = ex.Message;
-        //    }
-        //    return result;
-        //}
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return result;
+        }
 
         public List<Categorium> GetAll()
         {
