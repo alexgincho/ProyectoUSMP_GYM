@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace ProyectoUSMP_GYM.Models.Modeldb
+namespace ProyectoUSMP_GYM.Models.ModelDB
 {
     public partial class Usuariomembresium
     {
