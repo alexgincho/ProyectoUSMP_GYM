@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ProyectoUSMP_GYM.Models.Modeldb;
+using ProyectoUSMP_GYM.Models.ModelDB;
 using ProyectoUSMP_GYM.Models.Services;
 using ProyectoUSMP_GYM.Models.Services.Interfaces;
 using ProyectoUSMP_GYM.Models.Validators;

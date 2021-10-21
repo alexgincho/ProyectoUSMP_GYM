@@ -1,4 +1,4 @@
-﻿using ProyectoUSMP_GYM.Models.Modeldb;
+﻿using ProyectoUSMP_GYM.Models.ModelDB;
 using ProyectoUSMP_GYM.Models.Response;
 using ProyectoUSMP_GYM.Models.Services.Interfaces;
 using System;
