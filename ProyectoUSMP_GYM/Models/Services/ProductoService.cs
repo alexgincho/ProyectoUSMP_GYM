@@ -1,5 +1,4 @@
-using ProyectoUSMP_GYM.Models.Modeldb;
-
+using ProyectoUSMP_GYM.Models.ModelDB;
 using ProyectoUSMP_GYM.Models.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -79,6 +78,8 @@ namespace ProyectoUSMP_GYM.Models.Services
             return result;
         }
 
+
+        // otra chequeada al get producto
         public Producto Get(int id)
         {
             Producto result = null;
@@ -89,7 +90,7 @@ namespace ProyectoUSMP_GYM.Models.Services
                 {
                     var obj = db.Productos.Where(u => u.PkProducto == id && u.Isdelete != true);
                   
-                    // ta raro :v
+                    
 
                     var Producto = obj.FirstOrDefault();
                     if (Producto != null)

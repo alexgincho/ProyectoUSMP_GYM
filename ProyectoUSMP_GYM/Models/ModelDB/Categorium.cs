@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace ProyectoUSMP_GYM.Models.Modeldb
+namespace ProyectoUSMP_GYM.Models.ModelDB
 {
     public partial class Categorium
     {
@@ -14,6 +14,7 @@ namespace ProyectoUSMP_GYM.Models.Modeldb
 
         public int PkCategoria { get; set; }
         public string Descripcion { get; set; }
+        public bool? Isdelete { get; set; }
 
         public virtual ICollection<Producto> Productos { get; set; }
     }

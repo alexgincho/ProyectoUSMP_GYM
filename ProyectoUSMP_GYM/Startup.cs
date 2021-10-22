@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ProyectoUSMP_GYM.Models.Modeldb;
+using ProyectoUSMP_GYM.Models.ModelDB;
 using ProyectoUSMP_GYM.Models.Services;
 using ProyectoUSMP_GYM.Models.Services.Interfaces;
 using ProyectoUSMP_GYM.Models.Validators;
@@ -34,10 +34,13 @@ namespace ProyectoUSMP_GYM
             services.AddScoped<IRolesService, RolesService>();
             services.AddScoped<IProductoService, ProductoService>();
             services.AddScoped<ICategoriaService, CategoriaService>();
+            services.AddScoped<IProveedorService, ProveedorService>();
+
             // Inyectando Fluent Validation
             services.AddMvc().AddFluentValidation();
             // Agregando Inyeccion de Dependencias FluentValidation
             services.AddTransient<IValidator<Personaladm>, PersonalValidator>();
+            
 
 
 
