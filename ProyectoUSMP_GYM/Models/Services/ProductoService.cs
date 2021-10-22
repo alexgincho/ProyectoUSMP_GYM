@@ -36,7 +36,7 @@ namespace ProyectoUSMP_GYM.Models.Services
                         result.Imagen = entity.Imagen;
                        
 
-                        db.Productos.Add(result);
+                        db.Add(result);
                         db.SaveChanges();
                     }
                     else { throw new Exception("Error"); }
