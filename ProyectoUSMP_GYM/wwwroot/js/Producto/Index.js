@@ -57,7 +57,7 @@ $(document).ready(function() {
             { data: "preciocompra", title: "Precio de Compra" },
             { data: "cantidad", title:"Cantidad" },
             { data: "descuento", title: "Descuento" },
-            { data: "fkcategoria", title: "Categoria" },
+            { data: "fkCategoria", title: "Categoria" },
             { data: "fechavencimiento", title: "Fecha de Vencimiento" },
             {
                 data: null,

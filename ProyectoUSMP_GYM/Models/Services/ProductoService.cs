@@ -26,14 +26,14 @@ namespace ProyectoUSMP_GYM.Models.Services
                         result.Precioventa=entity.Precioventa;  
                         result.Preciocompra=entity.Preciocompra;
                         result.Cantidad=entity.Cantidad;    
-                        result.Descuento=entity.Descuento;  
-                        result.FkProveedor=entity.FkProveedor;  
+                        result.Descuento=entity.Descuento;
+                        result.FkProveedor = 2;
                         result.FkCategoria=entity.FkCategoria;  
                         result.Fechavencimiento=DateTime.Now;
                         result.FkPersonalcrea = 1;
                         result.Fechacrea=DateTime.Now;
                         result.Isdelete = false;
-                        result.Imagen = entity.Imagen;
+                        result.Imagen = "ALGUNA IMAGEN";
                        
 
                         db.Add(result);
