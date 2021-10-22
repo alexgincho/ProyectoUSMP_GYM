@@ -73,7 +73,7 @@ namespace ProyectoUSMP_GYM.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateProducto([FromBody]Producto entity)
+        public IActionResult UpdateProducto([FromBody] Producto entity)
         {
             Response rpta = new Response();
             try

@@ -33,7 +33,7 @@ namespace ProyectoUSMP_GYM.Models.Services
                         result.FkPersonalcrea = 1;
                         result.Fechacrea=DateTime.Now;
                         result.Isdelete = false;
-                        result.Imagen = "ALGUNA IMAGEN";
+                        result.Imagen = "IMG";
                        
 
                         db.Add(result);

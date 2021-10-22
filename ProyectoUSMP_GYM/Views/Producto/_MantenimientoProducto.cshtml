@@ -5,12 +5,13 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Registrar Producto</h4>
+                <h4 class="modal-title">@(Model.PkProducto !=0 ? "Actualizar":"Registrar") Producto</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+                <input type="hidden" asp-for="PkProducto">
                 <form id="FormSavePersonal">
                     <div class="form-row">
                         <div class="col">
@@ -48,19 +49,19 @@
                             <label>Descuento</label>
                             <input type="text" class="form-control form-control-sm" placeholder="Descuento" asp-for="Descuento" autocomplete="off">
                         </div>
-                        
+
                         <div class="col">
                             <label>Categoria</label>
                             <select class="form-control form-control-sm" asp-for="FkCategoria">
-                               
+
                                 @foreach (var Cat in ViewBag.Categoria)
                                 {
                                     <option value="@Cat.PkCategoria"> @Cat.Descripcion </option>
                                 }
-                                
+
                             </select>
                         </div>
-                        
+
 
                     </div>
                     <div class="form-row">
@@ -68,6 +69,11 @@
                             <label>Fecha de Vencimiento</label>
                             <input type="date" class="form-control form-control-sm" placeholder="Fecha de Vencimiento" asp-for="Fechavencimiento" autocomplete="off">
                         </div>
+                        @*<div class="col">
+                    <label>Imagen</label>
+                    <input type="text" class="form-control form-control-sm" placeholder="URL de imagen" asp-for="Imagen" autocomplete="off">
+                </div>*@
+
                     </div>
                 </form>
             </div>
