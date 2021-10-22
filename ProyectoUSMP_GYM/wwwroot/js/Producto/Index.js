@@ -25,12 +25,10 @@ $(document).ready(function() {
                 $('.modal-container').html(data).find('.modal').modal({
                     show: true
                 });
-            },error : function (error){
-                console.log(error);
             }
         });
     }
-/*
+
     //Listadao de Producto-revisar getallproducto
     let DataTableProducto = TableProducto.DataTable({
         scrollY:200,
@@ -38,7 +36,7 @@ $(document).ready(function() {
         paging: false,
         ordering: false,
         ajax: {
-            url: '/Producto/GetAllProducto',
+            url: '/Producto/GetAllProductoP',
         },
         columnDefs: [
             { targets: 0, width:100},
@@ -49,7 +47,7 @@ $(document).ready(function() {
             { targets: 5, width: 100 },
             { targets: 6, width: 210 },
             { targets: 7, width: 150 },
-            { targets: 8, width: 100 },
+            { targets: 8, width: 100 }
         ],
         columns: [
             { data: "codigo", title:"Codigo" },
@@ -59,7 +57,7 @@ $(document).ready(function() {
             { data: "preciocompra", title: "Precio de Compra" },
             { data: "cantidad", title:"Cantidad" },
             { data: "descuento", title: "Descuento" },
-            { data: "categoria", title: "Categoria" },
+            { data: "fkcategoria", title: "Categoria" },
             { data: "fechavencimiento", title: "Fecha de Vencimiento" },
             {
                 data: null,
@@ -84,7 +82,7 @@ $(document).ready(function() {
             "Preciocompra": $("#Preciocompra").val(),
             "Cantidad": $("#Cantidad").val(),
             "Descuento" : $("#Descuento").val(),
-            "Categoria": $("#Categoria"),
+            "FkCategoria": $("#FkCategoria").val(),
             "Fechavencimiento": $("#Fechavencimiento").val()
         }
 
@@ -92,8 +90,8 @@ $(document).ready(function() {
             title: 'Desea Registrar este producto?',
             showDenyButton: true,
             confirmButtonText: 'Registrar',
-            denyButtonText: 'Cancelar',
-            denyButtonClass: 'button-cancel'
+            denyButtonText: `Cancelar`,
+            //denyButtonClass: 'button-cancel'
         }).then((result) =>{
             if(result.isConfirmed){
                 $.ajax({
@@ -108,7 +106,7 @@ $(document).ready(function() {
                             console.log(data);
                             Swal.fire('Saved!', '', 'success')
                             $('#modal-default').modal('hide');
-                            DataTablePersonal.ajax.reload();
+                            DataTableProducto.ajax.reload();
                         }
                         else if(data.state == 404){
                             console.log(data);
@@ -137,6 +135,62 @@ $(document).ready(function() {
         let id = DataTableProducto.row($(this).parents("tr")).data.pkProducto;
         console.log(id);
         InvocarModal(id);
+    });
+    $(".modal-container").on("click", "#btnUpdate", function (e){
+        e.preventDefault();
+        let Personal = {
+            "PkProducto": $("#PkProducto").val(),
+            "Codigo": $("#Dni").val(),
+            "Nombre": $("#Nombre").val(),
+            "Descripcion": $("#Descripcion").val(),
+            "Precioventa": $("#Precioventa").val(),
+            "Preciocompra": $("#Preciocompra").val(),
+            "Cantidad": $("#Cantidad").val(),
+            "Descuento": $("#Descuento").val(),
+            "FkCategoria": $("#FkCategoria").val(),
+            "Fechavencimiento": $("#Fechavencimiento").val(),
+        }
+
+        Swal.fire({
+            title: 'Desea actualizar este Producto?',
+            showDenyButton: true,
+            confirmButtonText: 'Actualizar',
+            denyButtonText: `Cancelar`,
+            denyButtonClass: 'button-cancel'
+        }).then((result) => {
+            if(result.isConfirmed){
+                $.ajax({
+                    url: '/Producto/UpdateProducto',
+                    data: JSON.stringify(Personal),
+                    type: 'POST',
+                    contentType: 'application/json;charset=utf-8',
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        if(data.state == 200){
+                            console.log(data);
+                            Swal.fire('Update!', '', 'success')
+                            $('#modal-default').modal('hide');
+                            DataTableProducto.ajax.reload();          
+                        }
+                        else if (data.state == 404){
+                            console.log(data);
+                            Swal.fire(`Ups! ${data.message}`, '', 'info')
+                                $('#modal-default').modal('hide');
+                        }
+                    },
+                    error: function(error){
+                        if(error.status === 400){
+                            Swal.fire('Ups! Ocurrio Algo.', '', 'info')
+                        }
+                    }
+                })
+            }
+            else if (result.isDenied){
+                Swal.fire('Cambios no actualizados', '', 'info')
+                $('#modal-default').modal('hide');
+            }
+        })
     });
 
     //Desactiva un Producto
@@ -177,7 +231,7 @@ $(document).ready(function() {
                     },
                     error: function (error) {
                         if (error.status === 400) {
-                            Swal.fire('Upss! Ocurrio Algo.', '', 'info')
+                            Swal.fire('Ups! Ocurrio Algo.', '', 'info')
                         }
                     }
                 });
@@ -186,5 +240,5 @@ $(document).ready(function() {
    
     });
     
-*/
+
 });

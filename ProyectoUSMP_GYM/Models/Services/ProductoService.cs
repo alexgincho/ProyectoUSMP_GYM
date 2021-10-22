@@ -1,4 +1,5 @@
 using ProyectoUSMP_GYM.Models.Modeldb;
+
 using ProyectoUSMP_GYM.Models.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ namespace ProyectoUSMP_GYM.Models.Services
                         result.Imagen = entity.Imagen;
                        
 
-                        db.Productos.Add(result);
+                        db.Add(result);
                         db.SaveChanges();
                     }
                     else { throw new Exception("Error"); }
