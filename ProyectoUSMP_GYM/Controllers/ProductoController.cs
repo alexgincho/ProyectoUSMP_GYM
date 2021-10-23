@@ -11,10 +11,12 @@ namespace ProyectoUSMP_GYM.Controllers
 {
     public class ProductoController : Controller
     {
-       
+        private ICategoriaService _sCat;
         private IProductoService _sPro;
-        public ProductoController(IProductoService sPro)
+        public ProductoController(ICategoriaService sCat, IProductoService sPro)
         {
+            
+            this._sCat = sCat;
             this._sPro= sPro;
         }
         
@@ -25,6 +27,7 @@ namespace ProyectoUSMP_GYM.Controllers
         public IActionResult MantenimientoProductos(int id = 0)
         {
             Producto entity =null;
+            ViewBag.Categoria = _sCat.GetAll();
             if(id!=0) entity = _sPro.Get(id);
             return PartialView("_MantenimientoProducto",entity ?? new Producto());
         }
@@ -53,7 +56,6 @@ namespace ProyectoUSMP_GYM.Controllers
                             throw new Exception("Error. Los datos ya se encuentran registrados");
                         }
                         */
-
                         rpta.Data = _sPro.Create(entity);
                         rpta.Message = "Success";
                         rpta.State = 200;
@@ -69,6 +71,40 @@ namespace ProyectoUSMP_GYM.Controllers
             }
             return Ok(rpta);
         }
+
+        [HttpPost]
+        public IActionResult UpdateProducto([FromBody]Producto entity)
+        {
+            Response rpta = new Response();
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    if(entity.PkProducto != 0)
+                    {
+                        rpta.Data = _sPro.Update(entity);
+                        rpta.Message = "Success.";
+                        rpta.State = 200;
+                    }else
+                    {
+                        return BadRequest();
+                    }
+                    
+                }else {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                rpta.State = 404;
+                rpta.Message = ex.Message;
+                rpta.Data = null;
+            }
+            return Ok(rpta);
+        }
+       
+
+
         
         [HttpPost]
         public IActionResult DesactiveProducto([FromBody] int id)
@@ -91,6 +127,25 @@ namespace ProyectoUSMP_GYM.Controllers
                 rpta.State = 404;
                 rpta.Data = null;
                 rpta.Message = ex.Message; 
+                
+            }
+            return Ok(rpta);
+        }
+        [HttpGet]
+        public IActionResult GetAllProductoP()
+        {
+            Response rpta = new Response();
+            try
+            {
+                rpta.Data = _sPro.GetAll();
+                rpta.State = 200;
+                rpta.Message = "Success.";
+            }
+            catch (Exception ex)
+            {
+                rpta.Data = null;
+                rpta.State = 400;
+                rpta.Message = "Error";
                 
             }
             return Ok(rpta);
