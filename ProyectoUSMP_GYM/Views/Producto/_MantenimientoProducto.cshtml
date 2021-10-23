@@ -1,6 +1,7 @@
 <!-- Modal Personal Mantenimiento -->
 @model ProyectoUSMP_GYM.Models.ModelDB.Producto
 
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
 <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -69,12 +70,23 @@
                             <label>Fecha de Vencimiento</label>
                             <input type="date" class="form-control form-control-sm" placeholder="Fecha de Vencimiento" asp-for="Fechavencimiento" autocomplete="off">
                         </div>
-                        @*<div class="col">
-                    <label>Imagen</label>
-                    <input type="text" class="form-control form-control-sm" placeholder="URL de imagen" asp-for="Imagen" autocomplete="off">
-                </div>*@
-
+                        <div class="col">
+                            <label>Imagen</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="URL de imagen" asp-for="Imagen" autocomplete="off">
+                        </div>
+                        <br />
                     </div>
+                    
+                    
+                    @*<div class="form-row">
+                        
+                        
+                        <div class="col">
+                            <button id="cargar" type="button" class="btn btn-primary"> Ver Imagen </button>
+                        </div>
+                        <div  id="image"></div>
+
+                    </div>*@
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
@@ -84,3 +96,20 @@
         </div>
     </div>
 </div>
+
+
+@*<script>
+
+    $("#cargar").click(function () {
+
+        var image = new Image();
+
+        var src = document.getElementById('url').value; 
+        image.src = src;
+        image.style.height = '250px';
+        image.style.width = '200px';
+        $('#image').append(image);
+    });
+</script>*@
+
+

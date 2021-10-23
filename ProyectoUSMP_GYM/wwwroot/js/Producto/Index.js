@@ -2,6 +2,7 @@ $(document).ready(function() {
 
     let TableProducto = $("#TableProducto");
     let btnAddProducto = $("#btnAddProducto");
+    
 
     btnAddProducto.on("click", function (e) {
         e.preventDefault();
@@ -83,7 +84,8 @@ $(document).ready(function() {
             "Cantidad": $("#Cantidad").val(),
             "Descuento" : $("#Descuento").val(),
             "FkCategoria": $("#FkCategoria").val(),
-            "Fechavencimiento": $("#Fechavencimiento").val()
+            "Fechavencimiento": $("#Fechavencimiento").val(),
+            "Imagen": $("#Imagen").val()
         }
 
         Swal.fire({
