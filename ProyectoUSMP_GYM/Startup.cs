@@ -29,6 +29,8 @@ namespace ProyectoUSMP_GYM
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Auth Session
+            services.AddSession();
             // Inyeccion de Dependencias Modelos
             services.AddTransient<IPersonalService, PersonalService>();
             services.AddScoped<IRolesService, RolesService>();
@@ -61,6 +63,7 @@ namespace ProyectoUSMP_GYM
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.UseSession(); // Session Auth
             app.UseStaticFiles();
 
             app.UseRouting();
