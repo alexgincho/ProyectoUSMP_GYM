@@ -26,6 +26,9 @@ namespace ProyectoUSMP_GYM.Models.Services
                         result.Email=entity.Email;
                         result.Telefono=entity.Telefono;    
                         result.Isdelete=entity.Isdelete;
+
+                        db.Add(result);
+                        db.SaveChanges();
                     }     
                     else { throw new Exception("Error. Datos vacios."); }
                 }
@@ -45,7 +48,7 @@ namespace ProyectoUSMP_GYM.Models.Services
             {
                 using (var db = new DbContext())
                 {
-                    var obj = db.Productos.Find(id);
+                    var obj = db.Proveedors.Find(id);
                     if (obj != null)
                     {
                         obj.Isdelete = true;
@@ -54,7 +57,7 @@ namespace ProyectoUSMP_GYM.Models.Services
                         result = true;
 
                     }
-                    else { throw new Exception("error"); }
+                    else { throw new Exception("error, proveedor no encontrado"); }
                 }
 
             }
@@ -80,7 +83,7 @@ namespace ProyectoUSMP_GYM.Models.Services
                     {
                         result = prov;
                     }
-                    else { throw new Exception("proveedor no Existe."); }
+                    else { throw new Exception("El Proveedor No Existe."); }
                 }
             }
             catch (Exception ex)
@@ -98,7 +101,7 @@ namespace ProyectoUSMP_GYM.Models.Services
             {
                 using ( var db= new DbContext())
                 {
-                    var lst = db.Proveedors.ToList().OrderByDescending(p => p.PkProveedor).ToList();
+                    var lst = db.Proveedors.Where(p=>p.Isdelete!=true).ToList().OrderByDescending(p => p.PkProveedor).ToList();
                     if (lst.Count()> 0)
                     {
                         result = lst;
