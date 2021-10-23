@@ -32,8 +32,9 @@ namespace ProyectoUSMP_GYM.Models.Services
                         result.Fechavencimiento=DateTime.Now;
                         result.FkPersonalcrea = 1;
                         result.Fechacrea=DateTime.Now;
+                        result.Imagen = entity.Imagen;
                         result.Isdelete = false;
-                        result.Imagen = "ALGUNA IMAGEN";
+                        
                        
 
                         db.Add(result);
@@ -187,6 +188,7 @@ namespace ProyectoUSMP_GYM.Models.Services
                         obj.FkPersonalcrea = 1;
                         obj.Fechacrea = DateTime.Now;
                         obj.Fechaedita = entity.Fechaedita;
+                        obj.Imagen = entity.Imagen;
                         db.SaveChanges();
                         result = entity;
                     }

@@ -1,4 +1,5 @@
 using ProyectoUSMP_GYM.Models.ModelDB;
+using ProyectoUSMP_GYM.Models.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
