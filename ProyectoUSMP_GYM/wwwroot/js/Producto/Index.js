@@ -91,7 +91,7 @@ $(document).ready(function() {
             showDenyButton: true,
             confirmButtonText: 'Registrar',
             denyButtonText: `Cancelar`,
-            //denyButtonClass: 'button-cancel'
+            denyButtonClass: 'button-cancel'
         }).then((result) =>{
             if(result.isConfirmed){
                 $.ajax({
@@ -132,15 +132,15 @@ $(document).ready(function() {
     //Ingresando Actualizar
 
     TableProducto.on("click", "#btnEditar", function() {
-        let id = DataTableProducto.row($(this).parents("tr")).data.pkProducto;
+        let id = DataTableProducto.row($(this).parents("tr")).data().pkProducto;
         console.log(id);
         InvocarModal(id);
     });
     $(".modal-container").on("click", "#btnUpdate", function (e){
         e.preventDefault();
-        let Personal = {
+        let Producto = {
             "PkProducto": $("#PkProducto").val(),
-            "Codigo": $("#Dni").val(),
+            "Codigo": $("#Codigo").val(),
             "Nombre": $("#Nombre").val(),
             "Descripcion": $("#Descripcion").val(),
             "Precioventa": $("#Precioventa").val(),
@@ -148,7 +148,7 @@ $(document).ready(function() {
             "Cantidad": $("#Cantidad").val(),
             "Descuento": $("#Descuento").val(),
             "FkCategoria": $("#FkCategoria").val(),
-            "Fechavencimiento": $("#Fechavencimiento").val(),
+            "Fechavencimiento": $("#Fechavencimiento").val()
         }
 
         Swal.fire({
@@ -161,9 +161,9 @@ $(document).ready(function() {
             if(result.isConfirmed){
                 $.ajax({
                     url: '/Producto/UpdateProducto',
-                    data: JSON.stringify(Personal),
+                    data: JSON.stringify(Producto),
                     type: 'POST',
-                    contentType: 'application/json;charset=utf-8',
+                    contentType: "application/json;charset=utf-8",
                     dataType: "json",
                     success: function (data) {
                         console.log(data);
