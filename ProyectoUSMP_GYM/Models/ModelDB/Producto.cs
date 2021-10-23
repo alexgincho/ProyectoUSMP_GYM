@@ -27,8 +27,9 @@ namespace ProyectoUSMP_GYM.Models.ModelDB
         public DateTime? Fechacrea { get; set; }
         public int? FkPersonaledita { get; set; }
         public DateTime? Fechaedita { get; set; }
-        public bool? Isdelete { get; set; }
         public string Imagen { get; set; }
+        public bool? Isdelete { get; set; }
+        
 
         public virtual Categorium FkCategoriaNavigation { get; set; }
         public virtual Proveedor FkProveedorNavigation { get; set; }
