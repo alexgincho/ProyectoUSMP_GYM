@@ -29,20 +29,19 @@ namespace ProyectoUSMP_GYM
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Auth Session
+            services.AddSession();
             // Inyeccion de Dependencias Modelos
             services.AddTransient<IPersonalService, PersonalService>();
             services.AddScoped<IRolesService, RolesService>();
             services.AddScoped<IProductoService, ProductoService>();
             services.AddScoped<ICategoriaService, CategoriaService>();
             services.AddScoped<IProveedorService, ProveedorService>();
-
+            services.AddScoped<IMenuService, MenuService>();
             // Inyectando Fluent Validation
             services.AddMvc().AddFluentValidation();
             // Agregando Inyeccion de Dependencias FluentValidation
             services.AddTransient<IValidator<Personaladm>, PersonalValidator>();
-            
-
-
 
             services.AddControllersWithViews();
         }
@@ -61,6 +60,7 @@ namespace ProyectoUSMP_GYM
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.UseSession(); // Session Auth
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -71,7 +71,7 @@ namespace ProyectoUSMP_GYM
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=LoginPersonal}/{action=Index}/{id?}");
             });
         }
     }
