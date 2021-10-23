@@ -37,14 +37,11 @@ namespace ProyectoUSMP_GYM
             services.AddScoped<IProductoService, ProductoService>();
             services.AddScoped<ICategoriaService, CategoriaService>();
             services.AddScoped<IProveedorService, ProveedorService>();
-
+            services.AddScoped<IMenuService, MenuService>();
             // Inyectando Fluent Validation
             services.AddMvc().AddFluentValidation();
             // Agregando Inyeccion de Dependencias FluentValidation
             services.AddTransient<IValidator<Personaladm>, PersonalValidator>();
-            
-
-
 
             services.AddControllersWithViews();
         }
@@ -74,7 +71,7 @@ namespace ProyectoUSMP_GYM
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=LoginPersonal}/{action=Index}/{id?}");
             });
         }
     }
