@@ -71,7 +71,7 @@ namespace ProyectoUSMP_GYM
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=LoginPersonal}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
