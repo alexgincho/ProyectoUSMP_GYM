@@ -236,6 +236,11 @@ h1, h2, h3, h4, h5, h6 {
   top: 15px;
   right: 15px;
 }
+.registrate{
+  background-color: black;
+  border-radius: 12px;
+  
+} 
 .navbar-mobile ul {
   display: block;
   position: absolute;
