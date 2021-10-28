@@ -1710,3 +1710,28 @@ section {
   color: #fff;
   text-decoration: none;
 }
+/*--------------------------------------------------------------
+Imagen de Acerca de Nosotros
+--------------------------------------------------------------*/
+
+.acerca {
+    transform: rotate(-5deg);
+    margin: 10px auto;
+    border-radius: 7px;
+    border: 1px solid;
+    padding: 13px;
+    width: 400px;
+    height: 350px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background: url(../img/acercade.jpg);
+    background-size: cover;
+}
+
+    .acerca:hover {
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+    }
