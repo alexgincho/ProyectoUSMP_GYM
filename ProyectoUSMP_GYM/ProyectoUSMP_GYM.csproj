@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Views\CrearPersona\" />
+    <Folder Include="wwwroot\assets\img\team\" />
     <Folder Include="wwwroot\lib\dist\" />
     <Folder Include="wwwroot\lib\Plugins\" />
   </ItemGroup>
