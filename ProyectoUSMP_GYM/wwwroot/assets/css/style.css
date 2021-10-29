@@ -645,7 +645,7 @@ section {
         color: #444444;
         margin: 0 3px 10px 3px;
         transition: all ease-in-out 0.3s;
-        background: #000000;
+        background: #F6C90E;
         border-radius: 50px;
     }
 .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
