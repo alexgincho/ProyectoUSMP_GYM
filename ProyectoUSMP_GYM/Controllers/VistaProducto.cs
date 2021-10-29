@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProyectoUSMP_GYM.Models.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,79 +10,23 @@ namespace ProyectoUSMP_GYM.Controllers
 {
     public class VistaProducto : Controller
     {
+        private IProductoService _sProduct;
+        public VistaProducto (IProductoService product)
+        {
+            _sProduct = product;
+        }
         // GET: VistaProducto
         public ActionResult Index()
         {
+            ViewBag.Productos = _sProduct.GetAll();
             return View();
         }
-
-        // GET: VistaProducto/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        public IActionResult GetProductoxCategoria(int id)
         {
-            return View();
+            
+            return Ok();
         }
 
-        // GET: VistaProducto/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: VistaProducto/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: VistaProducto/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: VistaProducto/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: VistaProducto/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: VistaProducto/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
