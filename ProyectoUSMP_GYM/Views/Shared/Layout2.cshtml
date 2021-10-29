@@ -52,35 +52,14 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
-                    <li><a class="nav-link scrollto" href="#Acercadenosotros">Acerca de Nosotros</a></li>
-                    <li><a class="nav-link scrollto" href="#Horarios">Horarios</a></li>
-                    <li><a class="nav-link scrollto " href="#portfolio">Catalogo</a></li>
-                    <li><a  class="nav-link scrollto" href="#team">Equipo</a></li>
-              <!--  <li><a href="blog.html">Blog</a></li>
-                    <li class="dropdown">
-                        <a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="#">Drop Down 1</a></li>
-                            <li class="dropdown">
-                                <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Drop Down 1</a></li>
-                                    <li><a href="#">Deep Drop Down 2</a></li>
-                                    <li><a href="#">Deep Drop Down 3</a></li>
-                                    <li><a href="#">Deep Drop Down 4</a></li>
-                                    <li><a href="#">Deep Drop Down 5</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Drop Down 2</a></li>
-                            <li><a href="#">Drop Down 3</a></li>
-                            <li><a href="#">Drop Down 4</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="nav-link scrollto" href="#contact">Contactanos</a></li>
-                    -->
-                    <li><a class="nav-link scrollto " asp-controller="Registrar" asp-action="Index">Acceder</a></li>
-                    <li><a class="nav-link scrollto "  asp-controller="LoginPersonal" asp-action="Index">Registrate</a></li>
+                    <li><a class="nav-link scrollto active" asp-controller="Home" asp-action="Index">Inicio</a></li>
+                    <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Index">Acerca de Nosotros</a></li>
+                    <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Index">Horarios</a></li>
+                    <li><a class="nav-link scrollto " asp-controller="VistaProducto" asp-action="Index">Producto</a></li>
+                    <li><a  class="nav-link scrollto" asp-controller="Equipo" asp-action="Index">Equipo</a></li>
+              
+                    <li><a class="nav-link scrollto " asp-controller="LoginPersonal" asp-action="Index">Acceder</a></li>
+                    <li><a class="nav-link scrollto "  asp-controller="Registrar" asp-action="Index">Registrate</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -138,85 +117,7 @@
                         </p>
                     </div>
                 </div>
-                <!--Equipo o team-->
-                <section class="team">
-                    <div class="container">
-
-                        <div class="section-title">
-                            <h3>Equipo Desarrollador</h3>
-                        </div>
-                        <div class="container">
-
-                            <div class="row">
-                                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                                    <div class="member">
-                                        <div class="member-img">
-                                            <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                                            <div class="social">
-                                                <a href=""><i class="bi bi-facebook"></i></a>
-                                                <a href=""><i class="bi bi-instagram"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="member-info">
-                                            <h4>Alexander Chancayauri</h4>
-                                            <span>Back-end</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                                    <div class="member">
-                                        <div class="member-img">
-                                            <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
-                                            <div class="social">
-                                                <a href=""><i class="bi bi-facebook"></i></a>
-                                                <a href=""><i class="bi bi-instagram"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="member-info">
-                                            <h4>Yamil Arpasi</h4>
-                                            <span>Back-end</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                                    <div class="member">
-                                        <div class="member-img">
-                                            <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
-                                            <div class="social">
-                                                <a href=""><i class="bi bi-facebook"></i></a>
-                                                <a href=""><i class="bi bi-instagram"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="member-info">
-                                            <h4>Jhonatan Rivas</h4>
-                                            <span>Front-end</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                                    <div class="member">
-                                        <div class="member-img">
-                                            <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
-                                            <div class="social">
-                                                <a href=""><i class="bi bi-facebook"></i></a>
-                                                <a href=""><i class="bi bi-instagram"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="member-info">
-                                            <h4>Melissa Parra</h4>
-                                            <span>Front-end</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </section><!-- End About Section -->
+                
         <!-- ======= Services Section ======= -->
         <section id="services" class="services">
             <div class="container">
@@ -387,151 +288,7 @@
 
             </div>
         </section><!-- End Cta Section -->
-        <!-- ======= Portfolio Section ======= -->
-        <section id="portfolio" class="portfolio">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2>Catalogo</h2>
-                    <h3>Productos <span>MTGQ</span></h3>
-                    <p>Encuentra los mejores suplementos, vitaminas y mucho más con los mejores.</p>
-                    <p>"MutantGym te quiere Feliz!"</p>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-12 d-flex justify-content-center">
-                        <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">Todo</li>
-                            <li data-filter=".filter-app">Proteina</li>
-                            <li data-filter=".filter-card">Creatina</li>
-                            <li data-filter=".filter-web">Pre-Entreno</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row portfolio-container">
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="assets/img/portfolio/portafolio-1.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Proteina Whey - Lab Nutrition</h4>
-                            <p>"Ganancia de masa múscular"</p>
-                            <a href="assets/img/portfolio/portafolio-1.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details">
-                                <i class="bx bx-link"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="assets/img/portfolio/prework1.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Pre-Workout - Optimun Nutrition</h4>
-                            <p>"Aumento de fuerza y energia"</p>
-                            <a href="assets/img/portfolio/prework1.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details">
-                                <i class="bx bx-link"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="assets/img/portfolio/portafolio-2.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Proteina Whey - Optimun Nutrition</h4>
-                            <p>"Ganancia de masa múscular"</p>
-                            <a href="assets/img/portfolio/portafolio-2.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details">
-                                <i class="bx bx-link"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <img src="assets/img/portfolio/creatina1.jpeg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Creatina - Optimun Nutrition</h4>
-                            <p>"Aumento de ATP y velocidad de reconstrucción múscular"</p>
-                            <a href="assets/img/portfolio/creatina1.jpeg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details">
-                                <i class="bx bx-link"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="assets/img/portfolio/prework2.jpeg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Pre-Workout - Cellucor</h4>
-                            <p>"Aumento de fuerza y energia"</p>
-                            <a href="assets/img/portfolio/prework2.jpeg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details">
-                                <i class="bx bx-link"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="assets/img/portfolio/portafolio-3.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Proteina Whey - Dymatize</h4>
-                            <p>"Ganancia de masa múscular"</p>
-                            <a href="assets/img/portfolio/portafolio-3.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details">
-                                <i class="bx bx-link"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <img src="assets/img/portfolio/creatina2.jpeg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Creatina - Optimun Nutrition</h4>
-                            <p>"Aumento de ATP y velocidad de reconstrucción múscular"</p>
-                            <a href="assets/img/portfolio/creatina2.jpeg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details">
-                                <i class="bx bx-link"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <img src="assets/img/portfolio/creatina3.jpeg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Creatina - Lab Nutrition</h4>
-                            <p>"Aumento de ATP y velocidad de reconstrucción múscular"</p>
-                            <a href="assets/img/portfolio/creatina3.jpeg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details">
-                                <i class="bx bx-link"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="assets/img/portfolio/prework3.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Pre-Workout - SixStar</h4>
-                            <p>"Aumento de fuerza y energia"</p>
-                            <a href="assets/img/portfolio/prework3.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details">
-                                <i class="bx bx-link"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Portfolio Section -->
+       
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container">
