@@ -5,7 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\CrearPersona\" />
+    <Compile Remove="Views\CrearPersona\**" />
+    <Content Remove="Views\CrearPersona\**" />
+    <EmbeddedResource Remove="Views\CrearPersona\**" />
+    <None Remove="Views\CrearPersona\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\assets\img\team\" />
     <Folder Include="wwwroot\lib\dist\" />
     <Folder Include="wwwroot\lib\Plugins\" />

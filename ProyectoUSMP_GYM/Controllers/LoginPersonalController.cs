@@ -34,7 +34,7 @@ namespace ProyectoUSMP_GYM.Controllers
                 {
                     person.Menu = _MenuServ.GetMenuxRol(person.Personal.FkRol);
                     SessionHelper.SetObjectAsJson(HttpContext.Session, "personal", person);
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("Index","Admin");
                 }
             }
             else { return BadRequest(); }
