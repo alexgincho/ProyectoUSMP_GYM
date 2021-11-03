@@ -38,6 +38,7 @@ namespace ProyectoUSMP_GYM
             services.AddScoped<ICategoriaService, CategoriaService>();
             services.AddScoped<IProveedorService, ProveedorService>();
             services.AddScoped<IMenuService, MenuService>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
             // Inyectando Fluent Validation
             services.AddMvc().AddFluentValidation();
             // Agregando Inyeccion de Dependencias FluentValidation

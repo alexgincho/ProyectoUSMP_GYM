@@ -1,4 +1,6 @@
-﻿using ProyectoUSMP_GYM.Models.Services.Interfaces;
+﻿using ProyectoUSMP_GYM.Models.ModelDB;
+using ProyectoUSMP_GYM.Models.Response;
+using ProyectoUSMP_GYM.Models.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,61 @@ using System.Threading.Tasks;
 
 namespace ProyectoUSMP_GYM.Models.Services
 {
-    public class UsuarioService: IUsuarioService
+    public class UsuarioService : IUsuarioService
     {
+        public Usuario CreateUsuario(UsuarioRequest U)
+        {
+            Usuario result = null;
+            string error = "";
+            try
+            {
+                using (var db = new DbContext())
+                {
+                    using (var transaccion = db.Database.BeginTransaction())
+                    {
+                        try
+                        {
+                            result = new Usuario();
+                            result.Dni = U.Usuario.Dni;
+                            result.Nombre = U.Usuario.Nombre;
+                            result.Apellidopaterno = U.Usuario.Apellidopaterno;
+                            result.Apellidomaterno = U.Usuario.Apellidomaterno;
+                            result.Telefono = U.Usuario.Telefono;
+                            result.Direccion = U.Usuario.Direccion;
+                            result.Email = U.Usuario.Email;
+                            result.Tipousuario = U.Usuario.Tipousuario; // ??
+                            result.Userweb = U.Usuario.Userweb; // ??
+                            result.FkPersonalcrea = 1;
+                            result.Fechacrea = DateTime.Now;
+                            result.Isdeleted = false;
+
+                            db.Usuarios.Add(result);
+                            db.SaveChanges();
+
+                            Usuariologin userLogin = new Usuariologin();
+                            userLogin.FkUsuario = result.PkUsuario; // valor?
+                            userLogin.Usuario = result.Email;
+                            userLogin.Passwords = U.LoginUser.Passwords;
+
+                            db.Usuariologins.Add(userLogin);
+                            db.SaveChanges();
+
+                            transaccion.Commit();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            transaccion.Rollback();
+                            throw new Exception();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return result;
+        }
     }
 }
