@@ -10,5 +10,6 @@ namespace ProyectoUSMP_GYM.Models.Services.Interfaces
     public interface IUsuarioService
     {
         public Usuario CreateUsuario(UsuarioRequest usuario);
+        public Usuario Login(LoginCliente user);
     }
 }
