@@ -102,7 +102,7 @@ namespace ProyectoUSMP_GYM.Controllers
             return View();
         }
 
-        public IActionResult probando()
+        public IActionResult Carrito()
         {
             return View();
         }
