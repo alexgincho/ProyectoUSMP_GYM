@@ -64,5 +64,66 @@ namespace ProyectoUSMP_GYM.Models.Services
             }
             return result;
         }
+
+        public List<Usuario> GetAll()
+        {
+            List<Usuario> result = null;
+            string error = "";
+            try
+            {
+                using (var db = new DbContext())
+                {
+                    var LstClient = db.Usuarios.ToList();
+                    if(LstClient.Count > 0) { result = LstClient; }
+                    else { throw new Exception(); }
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return result;
+        }
+
+        public Usuario Login(LoginCliente user)
+        {
+            Usuario result = null;
+            string error = "";
+            try
+            {             
+                using (var db = new DbContext())
+                {
+                    var usu = db.Usuarios.Join(db.Usuariologins.Where(ul => ul.Usuario == user.Email && ul.Passwords == user.Password),
+                                                                u => u.PkUsuario, ulg => ulg.FkUsuarioNavigation.PkUsuario, 
+                                                                (u, ulg) => new { 
+
+                                                                    pkUsuario = u.PkUsuario,
+                                                                    Nombre = u.Nombre,
+                                                                    ApellidoPaterno = u.Apellidopaterno,
+                                                                    ApellidoMaterno = u.Apellidomaterno,
+                                                                    Email = u.Email,
+                                                                    Telefono = u.Telefono,
+                                                                    Direccion = u.Direccion
+                                                                }).FirstOrDefault();
+                    if(usu.pkUsuario != 0)
+                    {
+                        result.PkUsuario = usu.pkUsuario;
+                        result.Nombre = usu.Nombre;
+                        result.Apellidopaterno = usu.ApellidoPaterno;
+                        result.Apellidomaterno = usu.ApellidoMaterno;
+                        result.Telefono = usu.Telefono;
+                        result.Email = usu.Email;
+                        result.Direccion = usu.Direccion;
+                    }
+                    else { throw new Exception("Error. Cliente no Existe"); }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return result;
+        }
     }
 }

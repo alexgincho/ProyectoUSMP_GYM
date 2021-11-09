@@ -228,5 +228,25 @@ namespace ProyectoUSMP_GYM.Models.Services
             return result;
 
         }
+
+        public List<Producto> GetAllProductoStock()
+        {
+            List<Producto> result = null;
+            string error = "";
+            try
+            {
+                using (var db = new DbContext())
+                {
+                    var LstProduct = db.Productos.Where(prod => prod.Isdelete != true && prod.Cantidad != 0).ToList();
+                    if(LstProduct.Count > 0) { result = LstProduct; }
+                    else { throw new Exception(); }
+                }
+            }
+            catch(Exception ex)
+            {
+                error = ex.Message;
+            }
+            return result;
+        }
     }
 }
