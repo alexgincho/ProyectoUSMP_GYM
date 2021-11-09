@@ -23,7 +23,7 @@ namespace ProyectoUSMP_GYM.Models.Services.Interfaces
 
         public Producto Update(Producto entity); //actualizar producto
 
-
+        public List<Producto> GetAllProductoStock();
     
 
     
