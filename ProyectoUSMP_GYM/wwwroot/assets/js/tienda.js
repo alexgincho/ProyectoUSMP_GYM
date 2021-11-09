@@ -3,8 +3,8 @@ addToShoppingCartButtons.forEach((addToCartButton) => {
   addToCartButton.addEventListener('click', addToCartClicked);
 });
 
-const comprarButton = document.querySelector('.comprarButton');
-comprarButton.addEventListener('click', comprarButtonClicked);
+//const comprarButton = document.querySelector('.comprarButton');
+//comprarButton.addEventListener('click', comprarButtonClicked);
 
 const shoppingCartItemsContainer = document.querySelector(
   '.shoppingCartItemsContainer'
@@ -116,3 +116,17 @@ function comprarButtonClicked() {
   shoppingCartItemsContainer.innerHTML = '';
   updateShoppingCartTotal();
 }
+
+// VistaProducto Html Js
+let addCarrito = document.querySelectorAll(".add-Carrito");
+let CardCarrito = document.querySelectorAll(".card");
+console.log(CardCarrito)
+addCarrito.forEach((v,i)=> {
+
+    addCarrito[i].addEventListener("click", function (e) {
+        e.preventDefault();
+        let contentCard = v.parentElement.parentElement;
+        let contentchild = contentCard.children;
+        console.log(contentchild[1].childNodes);
+    });
+})

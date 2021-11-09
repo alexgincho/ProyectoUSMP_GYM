@@ -60,9 +60,9 @@ namespace ProyectoUSMP_GYM.Controllers
             Response rpta = new Response();
             try
             {
-                var LstProd = _Ps.GetAllProductoStock();
-                if(LstProd.Count > 0) { rpta.Data = LstProd; rpta.State = 200; rpta.Message = "Success"; }
-                else { throw new Exception(); }
+                //var LstProd = _Ps.GetAllProductoStock();
+                //if(LstProd.Count > 0) { rpta.Data = LstProd; rpta.State = 200; rpta.Message = "Success"; }
+                //else { throw new Exception(); }
             }
             catch (Exception ex)
             {
@@ -81,9 +81,9 @@ namespace ProyectoUSMP_GYM.Controllers
             Response rpta = new Response();
             try
             {
-                var LstCliente = _Us.GetAll();
-                if (LstCliente.Count > 0) { rpta.Data = LstCliente; rpta.State = 200; rpta.Message = "Success"; }
-                else { throw new Exception(); }
+                //var LstCliente = _Us.GetAll();
+                //if (LstCliente.Count > 0) { rpta.Data = LstCliente; rpta.State = 200; rpta.Message = "Success"; }
+                //else { throw new Exception(); }
             }
             catch (Exception ex)
             {
