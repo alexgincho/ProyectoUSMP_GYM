@@ -9,10 +9,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using ProyectoUSMP_GYM.Models.Services.Interfaces;
 using ProyectoUSMP_GYM.Models.Response;
+using ProyectoUSMP_GYM.Models.ModelDB;
 
 namespace ProyectoUSMP_GYM.Controllers
 {
-    // prueba
     public class HomeController : Controller 
     {
 
@@ -20,6 +20,7 @@ namespace ProyectoUSMP_GYM.Controllers
         private IUsuarioService _Us;
         private readonly ILogger<HomeController> _loger;
 
+        public List<CarritoData> carritoDatas = new List<CarritoData>();
 
         public HomeController(IProductoService product, IUsuarioService Us, ILogger<HomeController> loger)
         {
@@ -61,14 +62,14 @@ namespace ProyectoUSMP_GYM.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var user = _Us.CreateUsuario(users);
-                    if (user != null)
-                    {
-                        rpta.Data = user;
-                        rpta.State = 200;
-                        rpta.Message = "Exito!";
-                    }
-                    else { throw new Exception("Error."); }
+                    //var user = _Us.CreateUsuario(users);
+                    //if (user != null)
+                    //{
+                    //    rpta.Data = user;
+                    //    rpta.State = 200;
+                    //    rpta.Message = "Exito!";
+                    //}
+                    //else { throw new Exception("Error."); }
                 }
                 else
                 {
@@ -84,13 +85,65 @@ namespace ProyectoUSMP_GYM.Controllers
 
             return Ok(rpta);
         }
-
-        // GET: VistaProducto
-        public ActionResult VistaProducto()
+        public IActionResult VistaProducto()
         {
-            ViewBag.Productos = _sProduct.GetAll();
             return View();
         }
+        public IActionResult GetProductosAll()
+        {
+            Response rpta = new Response();
+            try
+            {
+                var LstProducto = _sProduct.GetAll();
+                if(LstProducto.Count > 0)
+                {
+                    rpta.Data = LstProducto;
+                    rpta.State = 200;
+                    rpta.Message = "Success";
+                }
+                else { throw new Exception();  }
+            }
+            catch (Exception ex)
+            {
+                rpta.Data = null;
+                rpta.State = 400;
+                rpta.Message = "Error";
+            }
+            return Ok(rpta);
+        }
+        public IActionResult GetProducto(int id)
+        {
+            Producto producto = new Producto();
+            try
+            {             
+                var prod = _sProduct.Get(id);
+                if(prod != null) { producto = prod; }
+                else { prod = null; }
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+            }
+            return View(producto);
+        }
+
+        //[HttpPost]
+        //public IActionResult InsertarCarrito(Producto prod)
+        //{
+        //    int respuesta = 0;
+        //    if(prod != null) { respuesta = 0; }
+        //    else
+        //    {
+        //        CarritoData carrito = new CarritoData();
+        //        carrito.FkProducto = prod.PkProducto;
+        //        carritoDatas.Add(carrito);
+        //        respuesta = 1;
+        //    }
+        //    return Ok(respuesta);
+        //}
+
+
+
         [HttpGet]
         public IActionResult GetProductoxCategoria(int id)
         {

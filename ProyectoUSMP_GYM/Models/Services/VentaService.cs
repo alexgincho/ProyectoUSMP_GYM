@@ -1,4 +1,5 @@
 ﻿using ProyectoUSMP_GYM.Models.ModelDB;
+using ProyectoUSMP_GYM.Models.Response;
 using ProyectoUSMP_GYM.Models.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,21 @@ namespace ProyectoUSMP_GYM.Models.Services
 {
     public class VentaService : IVentaService
     {
+        public List<CarritoData> AddCarrito(CarritoData carrito)
+        {
+            List<CarritoData> result = null;
+            string error = "";
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return result;
+        }
+
         public Ventum CreateVenta(Ventum venta)
         {
             Ventum result = null;
