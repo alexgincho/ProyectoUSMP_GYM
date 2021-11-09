@@ -16,9 +16,8 @@
     <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="~/assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -27,7 +26,8 @@
     <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="~/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="~/assets/vendor/isotope-layout/isotope.pkgd.js" rel="stylesheet" >
+    <link href="~/assets/vendor/isotope-layout/isotope.pkgd.js" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/Plugins/fontawesome-free/css/all.min.css" />
     <!-- Template Main CSS File -->
     <link href="~/assets/css/style.css" rel="stylesheet">
 </head>
@@ -48,7 +48,14 @@
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Equipo">Equipo</a></li>
                     <li><a class="nav-link scrollto " asp-controller="LoginUsuario" asp-action="Index">Acceder</a></li>
                     <li><a class="nav-link scrollto " asp-controller="Home" asp-action="Registrar">Registrate</a></li>
-                    <a class="btn btn-success bi bi-cart4" asp-controller="Home" asp-action="Carrito">Carrito</a>
+                    <li>
+                        <a class="btn btn-success bi bi-cart4" asp-controller="Home" asp-action="Carrito">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill contador-carrito">0</span>
+                        </a>
+                        
+                    </li>
+                    
 
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -153,17 +160,41 @@
         let ArrayProducto = [];
         $(document).on('click', '.btn-agregar-carrito', function (event) {
             var json = $(this).data("elemento-2");
-
-            if (ArrayProducto.length > 0) {
-                var busqueda = ArrayProducto.find(v => v.pkProducto);
-                console.log(busqueda)
-                if (!busqueda) { ArrayProducto.push(json);}
-            }
-            else {
-                ArrayProducto.push(json);
-            }           
+            var actual = parseInt($(".contador-carrito").text());
+            actual = actual + 1;
+            $(".contador-carrito").text(actual);
+            $('#toast-carrito').toast('show');
+            //if (ArrayProducto.length > 0) {
+            //    var busqueda = ArrayProducto.find(v => v.pkProducto);
+            //    console.log(busqueda)
+            //    if (!busqueda) { ArrayProducto.push(json);}
+            //}
+            //else {
+            //    ArrayProducto.push(json);
+            //}   
+            ArrayProducto.push(json);
             localStorage.setItem("DetalleCarrito", JSON.stringify(ArrayProducto));
         });
+
+        
+        if (localStorage.getItem("DetalleCarrito")) {
+            let CarritoJson = localStorage.getItem("DetalleCarrito");
+            let JsonCarrito = JSON.parse(CarritoJson);
+            let ArrayCard = [];
+            for (let i = 0; i < JsonCarrito.length; i++) {
+                ArrayCard.push(JsonCarrito[i]);
+            }
+            $(".contador-carrito").text(ArrayCard.length);
+            $('#toast-carrito').toast('show');
+            console.log(ArrayCard)
+            
+        }
+        else {
+            console.log("Carrito Vacio")
+        }
+
+
+
     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
