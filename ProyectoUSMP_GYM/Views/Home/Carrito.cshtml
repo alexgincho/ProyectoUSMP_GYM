@@ -17,7 +17,17 @@
                             Tienes <span id="cantidad-articulos" class="ml-1">0</span> artículo(s) en tu carrito
                         </div>
                         <div id="productos-seleccionados">
-
+                            <table class="table table-striped" id="content-productos-carrito">
+                                <thead>
+                                    <tr>
+                                        <td> Descripcion</td>
+                                        <td> Cantidad </td>
+                                        <td> P. Uni</td>
+                                        <td> S. Total </td>
+                                        <td>  </td>
+                                    </tr>                                 
+                                </thead>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -67,5 +77,10 @@
     </div>
 
 </div>
+@section Scripts {
+    <script src="~/js/Carrito/_Carrito.js"></script>
+<script type="text/javascript">
 
- 
+</script>
+}
+
