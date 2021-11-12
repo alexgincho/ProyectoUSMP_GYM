@@ -34,19 +34,47 @@
 
             row.innerHTML = `
                 <td> <input type='hidden' value='${v.pkProducto}'  />  <strong> ${v.nombre} </strong>   </td>
-                <td> <button id='DesCant' class='btn btn-primary btn-sm' style='width: 30px;'> - </button> <input id='cantidad' class='form-control form-control-sm' style='text-align: center; width: 30px; display: inline-block;' value='1' type='text' /> <button id='AunCant' class='btn btn-primary btn-sm' style='width: 30px;'> + </button> </td>
-                <td> <input type='text' style='text-align: center; width: 80px; display: inline-block;' value='${v.precioventa}' /> </td>
-                <td> <input type='text' style='text-align: center; width: 80px; display: inline-block;' /> </td>
+                <td> <button id='DesCant' class='btn btn-primary btn-sm' style='width: 30px;'> - </button> <input id='cantidad' class='form-control form-control-sm' style='text-align: center; width: 30px; display: inline-block;' value='1' type='text' />
+                     <button id='AunCant' onclick="btnsumar()"  class='btn btn-primary btn-sm ' style='width: 30px;'> + </button> </td>
+                <td> <input type='text' id="precio" style='text-align: center; width: 80px; display: inline-block;' value='${v.precioventa}' /> </td>
+                <td> <input type='text'  id="suma" style='text-align: center; width: 80px; display: inline-block;' /> </td>
                 <td> <button class='btn btn-danger btn-sm'> <i class="far fa-trash-alt"></i> </button>  </td>
+                
+                
             `;
 
             tableBody.appendChild(row);
         });
     }
 
+    function btnsumar() {
+        var value = parseInt(document.getElementById('precio').value, 10);
+        
+        
+        value=value*2;
+
+        document.getElementById('suma').value = value;
+
+    }
+
+
+    function btnrestar() {
+        var value = 15;
+
+        value = isNaN(value) ? 0 : value;
+        value++;
+
+        document.getElementById('compra').value = value;
+
+    }
     
+
+   
+       
     GetCarritoCompras();
     LLenarTablaCarrito();
+    btnsumar();
+    btnrestar();
 
     //let DesCant = document.querySelectorAll("#DesCant");
     //let txtcantidad = document.querySelectorAll("#cantidad");
