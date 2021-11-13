@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@using ProyectoUSMP_GYM.Helpers;
+@using ProyectoUSMP_GYM.Models.ModelDB;
+@using ProyectoUSMP_GYM.Models.Response;
+@{
+    var Usuario = SessionHelper.GetObjectFromJson<Usuario>(Context.Session, "usuario");
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -30,6 +39,9 @@
     <link rel="stylesheet" href="~/lib/Plugins/fontawesome-free/css/all.min.css" />
     <!-- Template Main CSS File -->
     <link href="~/assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
@@ -46,17 +58,22 @@
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Index">Horarios</a></li>
                     <li><a class="nav-link scrollto " asp-controller="Home" asp-action="VistaProducto">Producto</a></li>
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Equipo">Equipo</a></li>
-                    <li><a class="nav-link scrollto " asp-controller="LoginUsuario" asp-action="Index">Acceder</a></li>
                     <li><a class="nav-link scrollto " asp-controller="Home" asp-action="Registrar">Registrate</a></li>
                     <li>
                         <a class="btn btn-success bi bi-cart4" asp-controller="Home" asp-action="Carrito">
                             <i class="fas fa-shopping-cart"></i>
                             <span class="badge bg-dark text-white ms-1 rounded-pill contador-carrito">0</span>
                         </a>
-                        
-                    </li>
-                    
 
+                    </li>
+                    @if (Usuario != null)
+                    {
+                        <li><a class="nav-link scrollto " asp-controller="LoginUsuario" asp-action="Index"><i class="fas fa-user-shield"></i> @Usuario.Nombre @Usuario.Apellidopaterno </a></li>
+                    }
+                    else
+                    {
+                        <li><a class="nav-link scrollto " asp-controller="LoginUsuario" asp-action="Index"><i class="fas fa-user-shield"></i>Login</a></li>
+                    }
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -163,7 +180,7 @@
             var actual = parseInt($(".contador-carrito").text());
             actual = actual + 1;
             $(".contador-carrito").text(actual);
-            $('#toast-carrito').toast('show');
+            /*$('#toast-carrito').toast('show');*/
             //if (ArrayProducto.length > 0) {
             //    var busqueda = ArrayProducto.find(v => v.pkProducto);
             //    console.log(busqueda)
@@ -171,12 +188,12 @@
             //}
             //else {
             //    ArrayProducto.push(json);
-            //}   
+            //}
             ArrayProducto.push(json);
             localStorage.setItem("DetalleCarrito", JSON.stringify(ArrayProducto));
         });
 
-        
+
         if (localStorage.getItem("DetalleCarrito")) {
             let CarritoJson = localStorage.getItem("DetalleCarrito");
             let JsonCarrito = JSON.parse(CarritoJson);
@@ -185,9 +202,9 @@
                 ArrayCard.push(JsonCarrito[i]);
             }
             $(".contador-carrito").text(ArrayCard.length);
-            $('#toast-carrito').toast('show');
+            /*            $('#toast-carrito').toast('show');*/
             console.log(ArrayCard)
-            
+
         }
         else {
             console.log("Carrito Vacio")
