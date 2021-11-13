@@ -148,7 +148,7 @@ namespace ProyectoUSMP_GYM.Controllers
         }
 
         [HttpPost]
-        public IActionResult RegistrarCarrito([FromBody] CarritoCompra carrito)
+        public IActionResult RegistrarCarrito([FromBody] CarritoCompra CarritoCompra)
         {
             Response rpta = new Response();
             try
@@ -156,7 +156,7 @@ namespace ProyectoUSMP_GYM.Controllers
                 var usuario = HttpContext.Session.GetString("usuario");
                 if (usuario != null)
                 {
-                    var venta = _Sv.AddCarrito(carrito);
+                    var venta = _Sv.AddCarrito(CarritoCompra);
                     if (venta != null)
                     {
                         rpta.Data = venta;

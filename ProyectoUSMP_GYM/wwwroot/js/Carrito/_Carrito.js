@@ -180,7 +180,13 @@
         let CarritoCompra = {
             Codigo: "",
             Total: totalPagar.textContent,
-            Detalles:[]
+            Detalles: [],
+            Metodo: {
+                Propietario: $("#trj_nombre").val(),
+                Numeroccv: $("#trj_cvv").val(),
+                Numerotarjeta: $("#trj_numero").val(),
+                Tipotarjeta: $("#card").val()
+            }
         }
         let Detalle =  {
             pkProducto: 0,
@@ -223,8 +229,10 @@
         let config = {
             method: 'POST',
             body: JSON.stringify(CarritoCompra),
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 'Content-Type': 'application/json' },
+            dataType: "json",
         }
+
         fetch(url, config)
             .then(response => {
                 console.log(response);
@@ -240,14 +248,35 @@
                     })
                 }
                 else {
-
+                    Swal.fire('Compra Exitosa!', '', 'success')
                     localStorage.removeItem('DetalleCarrito');
+                    setTimeout(function () { recargar(); }, 3000);
+                   
                 }
             })
             .catch(error => {
 
                 console.log(error)
             });
+
+        //Swal.fire({
+        //    title: 'Deseas Realizar esta Compra?',
+        //    showDenyButton: true,
+        //    showCancelButton: true,
+        //    confirmButtonText: 'Si',
+        //}).then((result) => {
+        //    /* Read more about isConfirmed, isDenied below */
+        //    if (result.isConfirmed) {
+
+                
+                
+        //    } else if (result.isDenied) {
+
+        //        Swal.fire('Esperamos tu Compra', '', 'info')
+        //    }
+        //})
+
+       
 
     });
 

@@ -53,6 +53,15 @@ namespace ProyectoUSMP_GYM.Models.Services
 
                             }
 
+                            Metodopago metodo = new Metodopago();
+                            metodo.Numerotarjeta = carrito.Metodo.Numerotarjeta;
+                            metodo.Numeroccv = carrito.Metodo.Numeroccv;
+                            metodo.Propietario = carrito.Metodo.Propietario;
+                            metodo.Tipotarjeta = carrito.Metodo.Tipotarjeta;
+
+                            db.Metodopagos.Add(metodo);
+                            db.SaveChanges();
+
                             transaccion.Commit();
                         }
                         catch (Exception ex)
