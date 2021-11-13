@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -12,7 +11,7 @@ namespace ProyectoUSMP_GYM.Models.ModelDB
         public string Usuario { get; set; }
         public string Passwords { get; set; }
         public int? FkUsuario { get; set; }
-        [JsonIgnore]
+
         public virtual Usuario FkUsuarioNavigation { get; set; }
     }
 }
