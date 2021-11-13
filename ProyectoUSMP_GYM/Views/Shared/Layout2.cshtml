@@ -46,13 +46,16 @@
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Index">Horarios</a></li>
                     <li><a class="nav-link scrollto " asp-controller="Home" asp-action="VistaProducto">Producto</a></li>
                     <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Equipo">Equipo</a></li>
-                    <li><a class="nav-link scrollto " asp-controller="LoginUsuario" asp-action="Index">Acceder</a></li>
                     <li><a class="nav-link scrollto " asp-controller="Home" asp-action="Registrar">Registrate</a></li>
                     <li>
                         <a class="btn btn-success bi bi-cart4" asp-controller="Home" asp-action="Carrito">
                             <i class="fas fa-shopping-cart"></i>
                             <span class="badge bg-dark text-white ms-1 rounded-pill contador-carrito">0</span>
                         </a>
+                        
+                    </li>
+                    <li>
+                        <a class="btn btn-outline-info" asp-controller="LoginUsuario" asp-action="Index" role="button"><i class="bi bi-person-circle"> </i> LOGIN</a>
                         
                     </li>
                     
