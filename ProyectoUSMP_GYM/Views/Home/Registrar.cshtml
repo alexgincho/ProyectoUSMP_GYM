@@ -23,7 +23,7 @@
                         <form action="#" method="post">
 
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Nombres">
+                                <input type="text" class="form-control" placeholder="Nombres" id="Nombre">
                                 <!--<div class="input-group-append">
                                     <div class="input-group-text">-->
                                 @*<span class="fas fa-user-tie"></span>*@
@@ -92,7 +92,7 @@
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-4">
-                                    <button type="submit" class="btn btn-warning btn-block">Crear</button>
+                                    <button type="submit" id="Registrar"class="btn btn-warning btn-block">Crear</button>
                                 </div>
                                 <!-- /.col -->
                             </div>
@@ -107,3 +107,32 @@
     </div>
 </div>
 <!-- /.login-box -->
+
+@section Scripts {
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            let Registrar = document.getElementById("Registrar")
+            let Nombre = document.getElementById("Nombre")
+
+            Registrar.addEventListener("click", function (e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Bienvenido  ' + Nombre.value + '',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+
+            });
+
+
+
+        }
+
+    </script>
+}
