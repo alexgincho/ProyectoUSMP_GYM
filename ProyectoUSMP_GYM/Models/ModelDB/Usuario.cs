@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -30,9 +29,7 @@ namespace ProyectoUSMP_GYM.Models.ModelDB
         public DateTime? Fechaedita { get; set; }
         public bool? Isdeleted { get; set; }
 
-        [JsonIgnore]
         public virtual ICollection<Usuariologin> Usuariologins { get; set; }
-        [JsonIgnore]
         public virtual ICollection<Usuariomembresium> Usuariomembresia { get; set; }
     }
 }

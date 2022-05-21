@@ -23,6 +23,7 @@ namespace ProyectoUSMP_GYM.Models.ModelDB
         public virtual DbSet<Distrito> Distritos { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<MenuRol> MenuRols { get; set; }
+        public virtual DbSet<Metodopago> Metodopagos { get; set; }
         public virtual DbSet<Personaladm> Personaladms { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
         public virtual DbSet<Proveedor> Proveedors { get; set; }
@@ -180,6 +181,35 @@ namespace ProyectoUSMP_GYM.Models.ModelDB
                     .WithMany()
                     .HasForeignKey(d => d.FkRol)
                     .HasConstraintName("fk_rol");
+            });
+
+            modelBuilder.Entity<Metodopago>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("metodopago");
+
+                entity.Property(e => e.Fechaexpiraciontar)
+                    .HasColumnType("character varying")
+                    .HasColumnName("fechaexpiraciontar");
+
+                entity.Property(e => e.Numeroccv)
+                    .HasColumnType("character varying")
+                    .HasColumnName("numeroccv");
+
+                entity.Property(e => e.Numerotarjeta)
+                    .HasColumnType("character varying")
+                    .HasColumnName("numerotarjeta");
+
+                entity.Property(e => e.Pkmetodopago)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("pkmetodopago");
+
+                entity.Property(e => e.Propietario)
+                    .HasColumnType("character varying")
+                    .HasColumnName("propietario");
+
+                entity.Property(e => e.Tipotarjeta).HasColumnName("tipotarjeta");
             });
 
             modelBuilder.Entity<Personaladm>(entity =>

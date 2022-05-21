@@ -80,10 +80,10 @@ h1, h2, h3, h4, h5, h6 {
 #header .logo img {
   max-height: 40px;
 }
-#header.header-scrolled, #header.header-inner-pages {
-  background: rgba(246, 201, 14, 0.9);
-  padding: 12px 0;
-}
+    #header.header-scrolled, #header.header-inner-pages {
+        background: #8bad9d;
+        padding: 12px 0;
+    }
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -303,7 +303,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/prueba.jpg") top center;
+  background: url("../img/cebollabanner.jpg") top center;
   background-size: cover;
   position: relative;
 }
@@ -1724,8 +1724,8 @@ Imagen de Acerca de Nosotros
     height: 350px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background: url(../img/acercade.jpg);
     background-size: cover;
+    background: url(../img/cebolla.jpg);
 }
 
     .acerca:hover {
@@ -1735,3 +1735,7 @@ Imagen de Acerca de Nosotros
         -ms-transform: scale(1.2);
         transform: scale(1.2);
     }
+
+.ocultar{
+  display: none;
+}

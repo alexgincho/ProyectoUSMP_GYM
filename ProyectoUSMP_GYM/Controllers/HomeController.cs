@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using ProyectoUSMP_GYM.Models.Services.Interfaces;
 using ProyectoUSMP_GYM.Models.Response;
 using ProyectoUSMP_GYM.Models.ModelDB;
+using ProyectoUSMP_GYM.Helpers;
+using ProyectoUSMP_GYM.Models.Request;
 
 namespace ProyectoUSMP_GYM.Controllers
 {
@@ -18,14 +20,16 @@ namespace ProyectoUSMP_GYM.Controllers
 
         private IProductoService _sProduct;
         private IUsuarioService _Us;
+        private IVentaService _Sv;
         private readonly ILogger<HomeController> _loger;
 
         public List<CarritoData> carritoDatas = new List<CarritoData>();
 
-        public HomeController(IProductoService product, IUsuarioService Us, ILogger<HomeController> loger)
+        public HomeController(IProductoService product, IUsuarioService Us, IVentaService ventas, ILogger<HomeController> loger)
         {
             this._sProduct = product;
             this._Us = Us;
+            this._Sv = ventas;
             this._loger = loger;
         }
 
@@ -126,24 +130,6 @@ namespace ProyectoUSMP_GYM.Controllers
             }
             return View(producto);
         }
-
-        //[HttpPost]
-        //public IActionResult InsertarCarrito(Producto prod)
-        //{
-        //    int respuesta = 0;
-        //    if(prod != null) { respuesta = 0; }
-        //    else
-        //    {
-        //        CarritoData carrito = new CarritoData();
-        //        carrito.FkProducto = prod.PkProducto;
-        //        carritoDatas.Add(carrito);
-        //        respuesta = 1;
-        //    }
-        //    return Ok(respuesta);
-        //}
-
-
-
         [HttpGet]
         public IActionResult GetProductoxCategoria(int id)
         {
@@ -158,6 +144,38 @@ namespace ProyectoUSMP_GYM.Controllers
         public IActionResult Carrito()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult RegistrarCarrito([FromBody] CarritoCompra CarritoCompra)
+        {
+            Response rpta = new Response();
+            try
+            {
+                var usuario = HttpContext.Session.GetString("usuario");
+                if (usuario != null)
+                {
+                    var venta = _Sv.AddCarrito(CarritoCompra);
+                    if (venta != null)
+                    {
+                        rpta.Data = venta;
+                        rpta.State = 200;
+                        rpta.Message = "Success";
+                    }
+                    else { throw new Exception(); }
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                rpta.Data = null;
+                rpta.State = 400;
+                rpta.Message = "Error";
+            }
+            return Ok(rpta);
         }
     }
 }
