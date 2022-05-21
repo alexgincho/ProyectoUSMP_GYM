@@ -1735,3 +1735,7 @@ Imagen de Acerca de Nosotros
         -ms-transform: scale(1.2);
         transform: scale(1.2);
     }
+
+.ocultar{
+  display: none;
+}
