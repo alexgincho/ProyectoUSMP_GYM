@@ -73,6 +73,69 @@
 
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="product-details mr-2">
+                            <div class="d-flex justify-content-between">
+                                <script>
+                                    //script para seleccionar tipo de entrega
+                                    function mostrar(num) {
+                                    if(num==0) {
+                                        document.getElementById('f1').style.display = '';
+                                        document.getElementById('f2').style.display = 'none';
+                                    }
+                                    else {
+                                        document.getElementById('f1').style.display = 'none';
+                                        document.getElementById('f2').style.display = '';
+                                    }
+                                    } 
+                                </script>
+                                <span class="ml-2">Método de entrega</span>
+                            </div>
+                            <hr class="mt-2 mb-2">
+                        </div>
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                 <!-- seleccionar tipo de entrega -->
+                                <label class="radio">
+                                    <input onclick="mostrar(0)" id="card" type="radio" name="card" value="payment"> <span>Recojo en tienda </span>
+                                </label>
+                                <label class="radio">
+                                    <input onclick="mostrar(1)" id="card" type="radio" name="card" value="payment"> <span>Envio a dirección</span>
+                                </label>
+                                <hr class="mt-2 mb-2">
+                                    <!-- mostrar tipo de entrega -->
+                                    <div id="f1" style="display:none">
+                                        <p><b>Datos de la empresa</b></p>
+                                        <p><b>Nombre: </b>Importaciones CURE</p>
+                                        <p><b>Dirección: </b>Av. Los castillos 455 - Surco</p>
+                                        <p><b>Telefono: </b>01-2563265</p>
+                                        <p><b>Horarios de atención:  </b>L-S 8:00am - 6:00pm</p>
+                                    </div>
+
+                                    <div id="f2" style="display:none"> 
+                                        <div>
+                                            <label class="credit-card-label mb-1 mt-2">Nombre del Titular</label>
+                                            <input type="text" class="form-control credit-inputs" placeholder="Nombre" id="trj_nombre">
+                                        </div>
+                                        <div>
+                                            <label class="credit-card-label mb-1 mt-2">Dirección</label>
+                                            <input type="text" class="form-control credit-inputs" placeholder="Dirección" id="trj_nombre">
+                                        </div>
+                                        <div>
+                                            <label class="credit-card-label mb-1 mt-2">Distrito</label>
+                                            <input type="text" class="form-control credit-inputs" placeholder="Distrito" id="trj_nombre">
+                                        </div>
+                                        <div>
+                                            <label class="credit-card-label mb-1 mt-2">Telefono</label>
+                                            <input type="text" class="form-control credit-inputs" placeholder="Telefono" id="trj_nombre">
+                                        </div>
+                                        
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
 
         </div>
