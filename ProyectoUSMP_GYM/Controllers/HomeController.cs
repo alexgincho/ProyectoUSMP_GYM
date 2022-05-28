@@ -11,7 +11,6 @@ using ProyectoUSMP_GYM.Models.Services.Interfaces;
 using ProyectoUSMP_GYM.Models.Response;
 using ProyectoUSMP_GYM.Models.ModelDB;
 using ProyectoUSMP_GYM.Helpers;
-using Microsoft.AspNetCore.Http;
 using ProyectoUSMP_GYM.Models.Request;
 
 namespace ProyectoUSMP_GYM.Controllers
