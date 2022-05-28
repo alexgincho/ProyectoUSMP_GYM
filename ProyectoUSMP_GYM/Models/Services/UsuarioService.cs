@@ -93,6 +93,7 @@ namespace ProyectoUSMP_GYM.Models.Services
             {             
                 using (var db = new DbContext())
                 {
+                    result = new Usuario();
                     var usu = db.Usuarios.Join(db.Usuariologins.Where(ul => ul.Usuario == user.Email && ul.Passwords == user.Password),
                                                                 u => u.PkUsuario, ulg => ulg.FkUsuarioNavigation.PkUsuario, 
                                                                 (u, ulg) => new { 

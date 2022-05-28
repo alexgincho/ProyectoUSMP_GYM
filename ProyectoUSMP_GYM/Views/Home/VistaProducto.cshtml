@@ -12,12 +12,11 @@
     <div class="bg-secondary py-3">
         <div class="container my-3">
             <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Compra con estilo </h1>
-                <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                <h1 class="display-4 fw-bolder">Los Productos al alcance De Tu Mano</h1>
             </div>
         </div>
     </div>
-
+        <input type="text" class="form-control" id="buscar" placeholder="Buscar...">
     <div class="py-2">
         <div class="container px-2 px-lg-2 mt-5">
             <div id="catalogo-productos" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -50,7 +49,7 @@
 
 
 @section Scripts {
-    @*<script src="~/assets/js/tienda.js"></script>*@
+<script src="~/assets/js/buscador2.js"></script>
 
 <script>
         $(document).ready(function () {
@@ -77,7 +76,7 @@
                         $.each(data.data, function (i, item) {
                             //catalogo-productos
                             console.log(item)
-                             $("<div>").addClass("col mb-5").append(
+                             $("<div>").addClass("col mb-5").attr('id','cards').append(
                                 $("<div>").addClass("card h-100").append(
                                     $("<img>").addClass("card-img-top").attr({ "src": item.imagen}),
                                     //Product details
@@ -88,12 +87,9 @@
                                         )
                                     ),
                                     //Product actions
-                                    $("<div>").addClass("card-footer p-4 pt-0 border-top-0 bg-transparent").append(
-                                        $("<div>").addClass("d-grid d-md-grid gap-2 d-md-block align-items-center text-center").append(
                                             $("<button>").addClass("btn btn-outline-dark mt-auto btn-detalle").text("Ver Detalle").attr({ "data-elemento": JSON.stringify(item) }),
                                             $("<button>").addClass("btn btn-outline-dark mt-auto btn-agregar-carrito").text("Agregar Carrito").attr({ "data-elemento-2": JSON.stringify(item)})
-                                        )
-                                    )
+
                                 )
 
                             ).appendTo("#catalogo-productos");
